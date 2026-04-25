@@ -3,419 +3,497 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aloha Academy | Impulsa Tus Redes Sociales y Vende Más con Nuestro Método Probado</title>
+    <title>Propuesta de Valor | Aloha Digital</title>
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#270e4e',     /* Morado Oscuro Fringe */
+                            light: '#fdf8fa',    /* Rosado/Morado Mega Clarito */
+                            accent: '#a855f7',   /* Acento vibrante */
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            600: '#7c3aed',
+                            900: '#4c1d95',
+                        },
+                        surface: {
+                            50: '#f8fafc',
+                            200: '#e2e8f0',
+                        },
+                        text: {
+                            main: '#1e0f35',     /* Texto oscuro con tinte morado */
+                            muted: '#5a4a75',    /* Texto secundario */
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.08)',
+                        'float': '0 30px 60px -20px rgba(124, 58, 237, 0.25)',
+                        'overlap': '0 -20px 50px rgba(0,0,0,0.15)', /* Sombra para el efecto de scroll */
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* Estilos básicos del cuerpo */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #110F1A;
-            color: #F5F5F5;
+            background-color: #270e4e; /* Base oscura para el Hero */
+            color: #1e0f35;
+            overflow-x: hidden;
         }
-        /* Utilidad para fondo con gradiente */
-        .gradient-bg {
-            background-color: #110F1A;
-            background-image: linear-gradient(145deg, #1E1B3A 0%, #4A0D66 50%, #110F1A 100%);
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        /* Animación de entrada para las secciones */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        ::-webkit-scrollbar-track {
+            background: #270e4e;
         }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        ::-webkit-scrollbar-thumb {
+            background: #7c3aed;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a855f7;
+        }
+
+        /* Video Mockup Ratio */
+        .video-mockup {
+            aspect-ratio: 9 / 16;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Horizontal Scroll Hide */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
-    <meta name="description" content="Descubre Aloha Academy, la plataforma de Aloha Digital con 8 años de experiencia impulsando marcas en USA y Puerto Rico. Aprende a crear videos virales y transformar seguidores en clientes con nuestro método flexible y simple para creadores de contenido y empresas.">
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-brand-accent selection:text-white">
 
-    <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-slate-900/50 backdrop-blur-lg border-b border-slate-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#inicio" class="text-3xl font-black tracking-tighter">
-                aloha academy
+    <!-- Navigation (Dark) -->
+    <nav class="fixed w-full top-0 z-50 bg-brand-dark/90 backdrop-blur-lg border-b border-white/10 py-4 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2.5 text-white">
+                <img src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto brightness-0 invert">
+                <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
             </a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#metodo" class="text-slate-300 hover:text-white transition-colors">Nuestro Método</a>
-                <a href="#academia" class="text-slate-300 hover:text-white transition-colors">La Academia</a>
-                <a href="#historia" class="text-slate-300 hover:text-white transition-colors">Nuestra Historia</a>
-                <a href="#testimonios" class="text-slate-300 hover:text-white transition-colors">Testimonios</a>
-            </nav>
-            <a href="#waitlist" class="hidden md:inline-block bg-purple-500 text-white font-bold py-2 px-6 text-sm rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50">
-                Únete a la Lista VIP
+            <a href="#contacto" class="hidden md:inline-flex bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-brand-100 hover:shadow-float transition-all duration-300">
+                Agendar Llamada
             </a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="inicio" class="pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <div class="text-center md:text-left">
-                        <h1 class="text-4xl md:text-6xl font-black leading-tight tracking-tighter">
-                            <span class="text-purple-400">Aloha Academy:</span> Impulsa Tus Redes y Vende Más.
-                        </h1>
-                        <p class="mt-6 text-lg max-w-xl mx-auto md:mx-0 text-slate-300">
-                            Descubre el método probado por 8 años que ha convertido a cientos de seguidores en clientes. De la mano de expertos, aprende a dominar las redes sociales, crear videos virales y transformar tu negocio.
+    <!-- Main Wrapper para el efecto de Stacking -->
+    <main class="relative w-full">
+
+        <!-- Hero Section (Fijo al fondo) con auto-centrado ajustado -->
+        <section class="sticky top-0 h-[100svh] min-h-[600px] w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-brand-dark text-white z-0">
+            <!-- Decoraciones de fondo abstractas -->
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pink-500 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+
+            <!-- Contenedor central: mt-32 y md:mt-40 para separar del navbar -->
+            <div class="relative z-10 max-w-5xl mx-auto text-center mt-32 md:mt-40 mb-16 md:mb-28 flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/20 text-brand-100 font-semibold text-xs tracking-widest uppercase mb-5 md:mb-6">
+                    PROPUESTA ALOHA DIGITAL
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-5 md:mb-6">
+                    Un solo ecosistema, <br class="hidden md:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300">resultados excepcionales.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-brand-100/80 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light">
+                    Aloha reemplaza las herramientas dispersas y los esfuerzos aislados con una única plataforma de alto nivel para posicionar tu marca en el mercado inmobiliario.
+                </p>
+                
+                <!-- Contenedor del Botón y Flecha -->
+                <div class="flex flex-col items-center justify-center gap-4">
+                    <a href="#solucion" class="inline-flex items-center justify-center gap-2 bg-white text-brand-dark px-10 py-4 rounded-full font-bold hover:scale-105 hover:shadow-float transition-all duration-300 text-lg">
+                        Descubrir cómo
+                    </a>
+                    
+                    <!-- Indicador de scroll -->
+                    <div class="animate-bounce opacity-50 mt-1">
+                        <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenedor que desliza por encima (Color rosado clarito) -->
+        <div id="solucion" class="relative z-20 bg-brand-light rounded-t-[3rem] shadow-overlap pb-20 pt-10">
+            
+            <!-- Decoración superior (pequeña píldora) -->
+            <div class="w-16 h-1.5 bg-brand-200 rounded-full mx-auto mb-10 md:mb-16 opacity-50"></div>
+
+            <!-- Message / Problem Section (Editorial / Magazine Layout) -->
+            <section class="py-12 px-6">
+                <div class="max-w-7xl mx-auto">
+                    
+                    <!-- Magazine Header -->
+                    <div class="mb-12 md:mb-16 pb-8 border-b border-brand-200/60 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100/80 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6">
+                                La Experiencia Digital
+                            </div>
+                            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight text-text-main leading-none">La imagen <br class="hidden md:block">lo es todo.</h2>
+                        </div>
+                        <div class="md:text-right max-w-sm">
+                            <p class="text-text-muted font-medium text-lg">Un enfoque editorial y estratégico para posicionar tu perfil por encima del ruido del mercado.</p>
+                        </div>
+                    </div>
+
+                    <!-- Editorial Grid (Lado a lado asegurado) -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-start">
+                        
+                        <!-- Columna Izquierda: Retrato & Perfil (Fijo a la izquierda) -->
+                        <div class="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
+                            <div class="relative w-full max-w-[340px] mx-auto md:mx-0">
+                                <!-- Fondo decorativo rotado (Dirección izquierda) -->
+                                <div class="absolute -inset-3 bg-gradient-to-tr from-brand-100 to-pink-100 rounded-[2.5rem] transform -rotate-2 z-0"></div>
+                                
+                                <!-- Carrusel Interactivo -->
+                                <div class="relative z-10 rounded-[2rem] shadow-soft w-full aspect-[4/5] overflow-hidden group cursor-pointer" onclick="toggleCarousel(true)" role="button" aria-label="Cambiar foto de perfil" tabindex="0" onkeydown="if(event.key==='Enter') toggleCarousel(true)">
+                                    <img id="carousel-img-1" src="https://i.imgur.com/WtHgKui.jpeg" alt="Andrea Guevara Aloha Digital 1" width="340" height="425" class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 opacity-100">
+                                    <img id="carousel-img-2" src="https://i.imgur.com/SubUAwm.jpeg" alt="Andrea Guevara Aloha Digital 2" width="340" height="425" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 opacity-0">
+                                    
+                                    <!-- Controles -->
+                                    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20" aria-hidden="true">
+                                        <div id="dot-1" class="w-6 h-1.5 rounded-full bg-white transition-all duration-300 shadow-sm"></div>
+                                        <div id="dot-2" class="w-2 h-1.5 rounded-full bg-white/50 transition-all duration-300 shadow-sm"></div>
+                                    </div>
+                                    
+                                    <!-- Overlay -->
+                                    <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                        <div class="bg-white/90 backdrop-blur-sm text-brand-dark px-4 py-2 rounded-full font-bold text-xs shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                                            <i data-lucide="mouse-pointer-click" class="w-3 h-3 text-brand-600"></i> Ver más
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Firma / Crédito Editorial (Alineado a la izquierda como revista) -->
+                            <div class="w-full max-w-[340px] mx-auto md:mx-0 flex flex-col pt-4 border-t-2 border-brand-200/80 text-center md:text-left">
+                                <p class="font-extrabold text-text-main text-xl tracking-tight">Andrea Guevara</p>
+                                <p class="text-xs text-brand-600 font-extrabold tracking-widest uppercase mt-1">Directora de Aloha Digital</p>
+                            </div>
+                        </div>
+
+                        <!-- Columna Derecha: Texto Editorial -->
+                        <div class="md:col-span-7 lg:col-span-8 flex flex-col gap-8 md:pt-2">
+                            <!-- Párrafo introductorio gigante -->
+                            <p class="text-2xl md:text-3xl font-medium text-text-main leading-snug">
+                                Qué gusto saludarte. Entendemos perfectamente lo que buscas: no quieres ser "un agente más" subiendo fotos de casas. <span class="text-brand-600">Quieres posicionarte como una autoridad en tu nicho.</span>
+                            </p>
+                            
+                            <!-- Cuerpo del texto dividido en 2 columnas en pantallas grandes -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-text-muted text-base lg:text-lg leading-relaxed font-medium">
+                                <div>
+                                    <p class="mb-6">
+                                        Hoy en día, tus compradores ideales están en <strong>Instagram y TikTok</strong>. Buscan conectar con la persona detrás de la propiedad antes de tomar una decisión de inversión. Nosotros construimos ese puente visual y estratégico.
+                                    </p>
+                                    <div class="h-px w-12 bg-brand-200 my-6"></div>
+                                    <p>
+                                        A diferencia de las agencias tradicionales, no nos limitamos a "publicar por publicar". Diseñamos una estética que refleja la exclusividad real de tu inventario inmobiliario.
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="mb-6">
+                                        Tu marca personal se convierte en la herramienta de ventas más poderosa. Tú aportas el conocimiento y el carisma; nosotros la dirección de arte, los guiones y la postproducción.
+                                    </p>
+                                    <!-- Cita destacada (Pull-quote) -->
+                                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-100/50 relative mt-4">
+                                        <i data-lucide="quote" class="absolute top-4 right-4 w-8 h-8 text-brand-50"></i>
+                                        <p class="text-brand-900 text-sm md:text-base font-semibold italic relative z-10 leading-relaxed">
+                                            "El objetivo es que cuando un cliente piense en bienes raíces en tu zona, tu rostro sea lo primero que venga a su mente."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="servicios" class="py-32 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-text-main">Ecosistema Digital</h2>
+                        <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">Todo lo que necesitas para destacar en el sector inmobiliario, centralizado en un solo equipo de expertos.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Service 1 -->
+                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+                            <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                                <i data-lucide="video" class="w-7 h-7 text-brand-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">TikTok & Reels</h3>
+                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
+                                Tú nos envías tus videos en crudo (grabados con tu celular) y nosotros hacemos la magia. Incluye guiones persuasivos y edición vertical para capturar atención en 3 segundos.
+                            </p>
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+                            <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                                <i data-lucide="layout-grid" class="w-7 h-7 text-pink-500"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Branding Exclusivo</h3>
+                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
+                                Un feed estéticamente impecable. Diseño de carruseles, portadas de reels y paleta de colores que transmitan confianza y alto valor a tus prospectos.
+                            </p>
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
+                            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                                <i data-lucide="mouse-pointer-click" class="w-7 h-7 text-purple-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Ads & Presencia Web</h3>
+                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
+                                Campañas en Meta Ads (FB/IG) conectadas a Landing Pages de alto impacto visual para destacar tus desarrollos estrella y aumentar tu alcance en el mercado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="py-24 px-6 overflow-hidden relative">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+                        <div>
+                            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-text-main">El trabajo en acción.</h2>
+                            <p class="text-text-muted text-lg font-medium">Formatos verticales optimizados para el algoritmo de hoy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Scroll Mockups for Reels/TikToks -->
+                    <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory hide-scrollbar">
+                        
+                        <!-- Mockup 1 -->
+                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate Reel">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <i data-lucide="user" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold">@cliente.inmobiliario</span>
+                                </div>
+                                <p class="text-sm font-light line-clamp-2">Tour virtual de este espectacular PH. 🏢✨ ¡Agenda tu visita!</p>
+                            </div>
+                        </div>
+
+                        <!-- Mockup 2 -->
+                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
+                            <img src="https://images.unsplash.com/photo-1628611225249-6c3c7c689552?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate TikTok">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="w-16 h-16 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center">
+                                    <i data-lucide="play" class="w-8 h-8 text-white fill-white ml-1"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <i data-lucide="user" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold">@cliente.asesor</span>
+                                </div>
+                                <p class="text-sm font-light line-clamp-2">3 tips para invertir en tu primera propiedad este año 📉💰</p>
+                            </div>
+                        </div>
+
+                        <!-- Mockup 3 -->
+                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate Reel">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                        <i data-lucide="user" class="w-5 h-5"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold">@agencia.realestate</span>
+                                </div>
+                                <p class="text-sm font-light line-clamp-2">Detalles que enamoran: acabados de lujo en la cocina 🤌</p>
+                            </div>
+                        </div>
+
+                        <!-- Mockup 4 (Call to Action) -->
+                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden flex items-center justify-center video-mockup cursor-pointer hover:bg-brand-50 transition-colors">
+                            <div class="text-center px-6">
+                                <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i data-lucide="plus" class="w-8 h-8 text-brand-600"></i>
+                                </div>
+                                <h3 class="font-bold text-xl mb-2 text-text-main">Tu perfil aquí</h3>
+                                <p class="text-sm text-text-muted font-medium">Siguiente caso de éxito.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section class="py-32 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20">
+                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-text-main">Planes de Inversión</h2>
+                        <p class="text-text-muted text-lg font-medium">Paquetes transparentes diseñados para escalar tu presencia.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                        <!-- Plan 1 -->
+                        <div class="bg-white p-10 rounded-[2rem] shadow-soft flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2">Plan Presencia</h3>
+                            <p class="text-sm text-text-muted mb-8 h-10 font-medium">Feed profesional y estético.</p>
+                            <div class="text-4xl font-extrabold mb-8 text-text-main">$XXX <span class="text-base font-medium text-text-muted">/mes</span></div>
+                            <ul class="space-y-4 mb-10 text-sm font-bold text-text-muted flex-grow">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> Optimización de Biografía</li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> 12 Posts Mensuales</li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> Creación de copys persuasivos</li>
+                            </ul>
+                            <a href="#contacto" class="block text-center bg-brand-light text-brand-600 py-4 rounded-xl font-extrabold hover:bg-brand-100 transition-colors w-full">Seleccionar</a>
+                        </div>
+
+                        <!-- Plan 2 (Highlighted) -->
+                        <div class="bg-brand-dark p-10 rounded-[2rem] shadow-float relative transform md:-translate-y-4 flex flex-col text-white">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-black uppercase tracking-widest py-1.5 px-5 rounded-full shadow-md">Recomendado</div>
+                            <h3 class="text-2xl font-bold mb-2">Plan Crecimiento</h3>
+                            <p class="text-sm text-brand-100/70 mb-8 h-10 font-medium">Enfoque en videos verticales y alcance.</p>
+                            <div class="text-5xl font-extrabold mb-8">$XXX <span class="text-base font-medium text-brand-100/50">/mes</span></div>
+                            <ul class="space-y-4 mb-10 text-sm font-bold text-brand-50 flex-grow">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0"></i> <strong>Todo lo del Plan Presencia</strong></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0"></i> Edición de <strong>8 Reels/TikToks</strong></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0"></i> Gestión de campañas Meta Ads</li>
+                            </ul>
+                            <a href="#contacto" class="block text-center bg-white text-brand-dark py-4 rounded-xl font-extrabold hover:bg-brand-50 transition-colors shadow-sm w-full">Seleccionar</a>
+                        </div>
+
+                        <!-- Plan 3 -->
+                        <div class="bg-white p-10 rounded-[2rem] shadow-soft flex flex-col">
+                            <h3 class="text-2xl font-bold mb-2">Plan Élite</h3>
+                            <p class="text-sm text-text-muted mb-8 h-10 font-medium">El ecosistema web y redes completo.</p>
+                            <div class="text-4xl font-extrabold mb-8 text-text-main">$XXX <span class="text-base font-medium text-text-muted">/mes</span></div>
+                            <ul class="space-y-4 mb-10 text-sm font-bold text-text-muted flex-grow">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> <strong>Todo lo del Plan Crecimiento</strong></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> <strong>1 Landing Page</strong> de impacto</li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> Gestión avanzada de Ads</li>
+                            </ul>
+                            <a href="#contacto" class="block text-center bg-brand-light text-brand-600 py-4 rounded-xl font-extrabold hover:bg-brand-100 transition-colors w-full">Seleccionar</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section id="contacto" class="py-24 px-6">
+                <div class="max-w-5xl mx-auto bg-brand-dark rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-float">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                    
+                    <div class="relative z-10">
+                        <h2 class="text-4xl md:text-6xl font-extrabold mb-8 text-white tracking-tight">¿Lista para dominar<br>tu mercado?</h2>
+                        <p class="text-xl text-brand-100/80 mb-12 max-w-2xl mx-auto font-medium">
+                            Agendemos una breve llamada de 15 minutos para conocernos, revisar tus objetivos y elegir el camino correcto.
                         </p>
-                        <div class="mt-10">
-                            <a href="#waitlist" class="inline-block bg-purple-500 text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 text-sm md:text-base whitespace-nowrap">
-                                QUIERO IMPULSAR MIS REDES
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#" class="bg-white text-brand-dark px-8 py-4 rounded-full font-extrabold hover:scale-105 transition-all duration-300 text-lg shadow-lg">
+                                Agendar Llamada
                             </a>
                         </div>
                     </div>
-                    <div class="relative flex justify-center h-full">
-                         <div class="absolute w-72 h-72 bg-purple-600/50 rounded-full filter blur-3xl -z-10"></div>
-                         <div class="absolute bottom-0 w-80 h-80 bg-purple-600/40 rounded-full filter blur-3xl -z-10"></div>
-                                                  <img src="alohadigital.jpg" alt="Aloha Digital" class="max-w-xs md:max-w-sm rounded-3xl border-8 border-slate-800 shadow-2xl object-cover">
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Method Section -->
-        <section id="metodo" class="py-20 md:py-28 bg-slate-900/50 fade-in-section">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="order-2 md:order-1">
-                        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">El Método Aloha Academy: Probado por 8 Años de Resultados.</h2>
-                        <div class="space-y-6 mb-8">
-                            <div class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-4 mt-1 flex-shrink-0"></i>
-                                <div>
-                                    <h3 class="font-bold text-lg">Estrategias Virales en 3 Pasos</h3>
-                                    <p class="text-slate-300">Aprende a crear contenido que capture la atención y se difunda orgánicamente, convirtiendo visualizaciones en oportunidades reales.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-4 mt-1 flex-shrink-0"></i>
-                                <div>
-                                    <h3 class="font-bold text-lg">Narrativa Persuasiva y Conexión Genuina</h3>
-                                    <p class="text-slate-300">Desarrolla habilidades para contar historias que resuenen, creen una comunidad leal y fomenten la interacción constante.</p>
-                                </div>
-                            </div>
-                             <div class="flex items-start">
-                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-400 mr-4 mt-1 flex-shrink-0"></i>
-                                <div>
-                                    <h3 class="font-bold text-lg">Conversión: De Seguidor a Cliente</h3>
-                                    <p class="text-slate-300">Implementa llamadas a la acción irresistibles y optimiza tu embudo para transformar el engagement en ventas concretas y medibles.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#waitlist" class="bg-purple-500 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50">ÚNETE A LA ACADEMIA</a>
-                    </div>
-                     <div class="order-1 md:order-2 flex justify-center">
-                         <div class="relative">
-                             <div class="w-64 h-64 bg-purple-500 rounded-full flex justify-center items-center shadow-2xl shadow-purple-500/30">
-                                 <img src="aloha-logo.png" alt="Aloha Digital Logo" class="w-full h-full object-contain p-8">
-                             </div>
-                             <div class="absolute inset-0 rounded-full border-4 border-purple-500/50 animate-ping"></div>
-                         </div>
-                     </div>
+            <!-- Footer -->
+            <footer class="border-t border-brand-200/50 py-12 px-6 text-center text-sm text-text-muted font-bold">
+                <div class="flex items-center justify-center gap-2.5 mb-6 text-text-main opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                    <img src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" loading="lazy" class="h-8 w-auto">
+                    <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
                 </div>
-            </div>
-        </section>
-
-        <!-- Aloha Academy Section (formerly Plans) -->
-        <section id="academia" class="py-20 md:py-28 gradient-bg fade-in-section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">Aloha Academy: Tu Próximo Nivel en Redes Sociales</h2>
-                <p class="mt-4 text-lg text-slate-300 text-center max-w-2xl mx-auto">
-                    Hemos tomado 8 años de experiencia impulsando marcas de USA y Puerto Rico, creando videos virales y transformando seguidores en clientes, y lo hemos destilado en un método flexible y simple para cualquier empresario o creador de contenido.
-                </p>
-                <div class="mt-16 grid lg:grid-cols-2 gap-8 items-center">
-                    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
-                        <h3 class="text-xl font-semibold text-purple-400 mb-4 tracking-wider uppercase">Lo que aprenderás</h3>
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="graduation-cap" class="w-6 h-6 text-green-400"></i><span><strong>Estrategias de Contenido Viral:</strong> Domina los ganchos de 3 segundos y la narrativa que atrapa.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="play-circle" class="w-6 h-6 text-green-400"></i><span><strong>Producción de Video Profesional:</strong> Crea videos de alta calidad sin necesidad de equipos costosos.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="trending-up" class="w-6 h-6 text-green-400"></i><span><strong>Optimización del Algoritmo:</strong> Haz que tus videos lleguen a más personas y crezcan tus seguidores.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="users" class="w-6 h-6 text-green-400"></i><span><strong>Construcción de Comunidad:</strong> Fomenta la interacción y convierte espectadores en fans leales.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="dollar-sign" class="w-6 h-6 text-green-400"></i><span><strong>Monetización y Ventas:</strong> Transforma tu contenido en ingresos reales con llamadas a la acción efectivas.</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-slate-900/70 border-2 border-purple-500 rounded-2xl p-8 flex flex-col h-full transition-all duration-300 relative hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10">
-                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2">
-                            <span class="bg-purple-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase shadow-lg">Método Comprobado</span>
-                        </div>
-                        <h3 class="text-xl font-semibold text-purple-400 mb-4 tracking-wider uppercase">¿Por qué Aloha Academy?</h3>
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="award" class="w-6 h-6 text-purple-400"></i><span><strong>Experiencia de 8 Años:</strong> Benefíciate del conocimiento acumulado al impulsar cientos de marcas.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="zap" class="w-6 h-6 text-purple-400"></i><span><strong>Resultados Comprobados:</strong> Aprende de estrategias que han generado videos virales y crecimiento real.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="star" class="w-6 h-6 text-purple-400"></i><span><strong>Contenido Auténtico y de Calidad:</strong> Creamos una plataforma a la altura de las mejores academias online.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="message-square" class="w-6 h-6 text-purple-400"></i><span><strong>Soporte y Comunidad:</strong> No estarás solo en este camino; acceso a una comunidad activa.</span></li>
-                            <li class="flex items-center space-x-3 text-slate-300"><i data-lucide="laptop" class="w-6 h-6 text-purple-400"></i><span><strong>Flexible y a Tu Ritmo:</strong> Aprende cuándo y cómo quieras, adaptado a tu estilo de vida.</span></li>
-                        </ul>
-                        <a href="#waitlist" class="bg-purple-500 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 w-full text-center">QUIERO SABER MÁS</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- About Us Section -->
-        <section id="historia" class="py-20 md:py-28 fade-in-section">
-            <div class="container mx-auto px-6">
-                 <div class="grid md:grid-cols-2 gap-16 items-center">
-                     <div class="flex justify-center items-center">
-                         <img src="andrea-ceo.jpg"
-                              alt="Andrea, CEO de Aloha Digital"
-                              class="rounded-2xl shadow-2xl max-w-md w-full">
-                     </div>
-                     <div>
-                         <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Nuestra Historia: De Aloha Digital a Aloha Academy, 8 Años Impulsando Marcas.</h2>
-                         <p class="text-slate-300 mb-6">
-                            Aloha Digital nació hace <strong>8 años</strong> en Venezuela, cuando nuestra fundadora y CEO, Andrea Guevara, envió un simple mensaje de texto ofreciendo una evaluación de una cuenta de Instagram. Ese pequeño gesto se esparció como pólvora, creando una red de contactos gigante que impulsó cientos de marcas en USA y Puerto Rico.
-                         </p>
-                         <p class="text-slate-300 mb-6">
-                            Durante años, Andrea ha trabajado tras bambalinas, creando videos virales para sus clientes. Pero la frustración crecía: ¿cómo era posible que ella, la mente detrás de tantos éxitos, no tuviera una presencia destacada en las redes?
-                         </p>
-                         <p class="font-bold mb-2">Así nace Aloha Academy:</p>
-                         <ul class="space-y-2 text-slate-300 mb-8">
-                             <li class="flex"><i data-lucide="sparkles" class="w-5 h-5 text-purple-400 mr-2 mt-1 flex-shrink-0"></i><span>Una plataforma digital desarrollada por su socio y esposo, Napoleón Baca.</span></li>
-                             <li class="flex"><i data-lucide="sparkles" class="w-5 h-5 text-purple-400 mr-2 mt-1 flex-shrink-0"></i><span>Diseñada para creadores de contenido y empresas que buscan un método probado, flexible y simple.</span></li>
-                             <li class="flex"><i data-lucide="sparkles" class="w-5 h-5 text-purple-400 mr-2 mt-1 flex-shrink-0"></i><span>Aprenderás a impulsar tus redes sociales con la misma estrategia que ha generado resultados por 8 años.</span></li>
-                             <li class="flex"><i data-lucide="sparkles" class="w-5 h-5 text-purple-400 mr-2 mt-1 flex-shrink-0"></i><span>Calidad premium, contenido 100% original y atención personalizada.</span></li>
-                         </ul>
-                         <p class="text-xl font-semibold italic mb-6">“Nuestro compromiso es que tu marca sea inolvidable y que cada video que crees sea un paso hacia tu éxito.”</p>
-                         <a href="#waitlist" class="inline-block bg-purple-500 text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 text-sm md:text-base whitespace-nowrap">ÚNETE A LA LISTA DE ESPERA</a>
-                     </div>
-                 </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonios" class="py-20 md:py-28 bg-slate-900/50 fade-in-section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white text-center">Lo Que Dicen Nuestros Clientes</h2>
-                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
-                        <p class="text-slate-300 mb-6">"¡El equipo de Aloha transformó nuestra presencia en redes! Los videos son increíbles y el engagement ha subido como la espuma."</p>
-                        <div class="flex items-center">
-                            <img src="lizette.jpeg" alt="Lizette Piñero" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-bold text-white">Lizette Piñero</p>
-                                <p class="text-sm text-slate-400">Pigmentus (Puerto Rico)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
-                        <p class="text-slate-300 mb-6">"Profesionales, creativos y siempre cumplen. Trabajar con ellos ha sido la mejor inversión para nuestra marca de moda."</p>
-                        <div class="flex items-center">
-                            <img src="https://i.pravatar.cc/150?img=2" alt="Foto de cliente" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/374151/FFFFFF?text=C';">
-                            <div>
-                                <p class="font-bold text-white">Carlos Gómez</p>
-                                <p class="text-sm text-slate-400">Fundador de UrbanStyle</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
-                        <p class="text-slate-300 mb-6">"Entendieron nuestra visión a la perfección y la llevaron a otro nivel. Los resultados hablan por sí solos. ¡Totalmente recomendados!"</p>
-                        <div class="flex items-center">
-                            <img src="https://i.pravatar.cc/150?img=3" alt="Foto de cliente" class="w-12 h-12 rounded-full mr-4" onerror="this.onerror=null;this.src='https://placehold.co/48x48/374151/FFFFFF?text=S';">
-                            <div>
-                                <p class="font-bold text-white">Sofía Rodríguez</p>
-                                <p class="text-sm text-slate-400">Gerente de Marketing en DeliFood</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+                <p>Producido con exclusividad por Aloha Digital &copy; 2026</p>
+            </footer>
+        </div>
     </main>
 
-    <!-- Waitlist Section (formerly Footer / Contact) -->
-    <footer id="waitlist" class="gradient-bg border-t border-slate-800 fade-in-section">
-        <div class="container mx-auto px-6 py-16">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-extrabold text-white mb-4">¡Prepárate para el Lanzamiento!</h2>
-                    <p class="text-slate-300 mb-8">Aloha Academy está a punto de abrir sus puertas. Sé uno de los primeros en acceder a nuestro método comprobado que te convertirá en un experto en redes sociales. ¡Únete a nuestra lista VIP y recibe actualizaciones exclusivas!</p>
-                    
-                    <!-- Countdown Timer -->
-                    <div class="text-center md:text-left mb-8">
-                        <p class="text-purple-400 text-lg font-semibold mb-2">Lanzamiento en:</p>
-                        <div id="countdown" class="flex justify-center md:justify-start space-x-4 text-white text-4xl font-bold">
-                            <div class="flex flex-col items-center">
-                                <span id="days">00</span>
-                                <span class="text-sm font-normal text-slate-400">Días</span>
-                            </div>
-                            <span>:</span>
-                            <div class="flex flex-col items-center">
-                                <span id="hours">00</span>
-                                <span class="text-sm font-normal text-slate-400">Horas</span>
-                            </div>
-                            <span>:</span>
-                            <div class="flex flex-col items-center">
-                                <span id="minutes">00</span>
-                                <span class="text-sm font-normal text-slate-400">Minutos</span>
-                            </div>
-                            <span>:</span>
-                            <div class="flex flex-col items-center">
-                                <span id="seconds">00</span>
-                                <span class="text-sm font-normal text-slate-400">Segundos</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4">
-                        <a href="tel:+584242499810" class="flex items-center group">
-                            <i data-lucide="phone" class="w-5 h-5 text-purple-400"></i>
-                            <span class="ml-4 text-lg text-slate-200 group-hover:text-white transition-colors">+584242499810</span>
-                        </a>
-                        <a href="mailto:ceo@alohaacademy.app" class="flex items-center group">
-                            <i data-lucide="mail" class="w-5 h-5 text-purple-400"></i>
-                            <span class="ml-4 text-lg text-slate-200 group-hover:text-white transition-colors">ceo@alohaacademy.app</span>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <form id="waitlistForm" action="https://formspree.io/f/movlzgaz" method="POST" class="space-y-4">
-                        <div>
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Tu Email" class="w-full bg-slate-800/50 border border-slate-700 rounded-lg py-3 px-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500" name="_replyto">
-                        </div>
-                        <button type="submit" class="bg-purple-500 text-white font-bold py-3 px-6 md:px-8 rounded-full hover:bg-purple-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/50 w-full text-sm md:text-base whitespace-nowrap">QUIERO ESTAR EN LA LISTA VIP</button>
-                    </form>
-                    <div id="thankYouMessage" class="hidden text-center text-green-400 font-bold mt-4">
-                        ¡Gracias por unirte a la lista VIP! Te mantendremos informado.
-                    </div>
-                </div>
-            </div>
-            <div class="mt-16 border-t border-slate-700 pt-8 text-center text-slate-400 text-sm">
-                <p>&copy; <span id="year"></span> Aloha Academy. Todos los derechos reservados.</p>
-                <p class="text-xs mt-2 text-slate-500">Desarrollado por Synta Studio</p>
-            </div>
-        </div>
-    </footer>
-
-
+    <!-- Initialize Icons and Scripts -->
     <script>
-        // Inicializar iconos de Lucide
+        // Init Lucide Icons
         lucide.createIcons();
 
-        // Establecer el año actual en el pie de página
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Desplazamiento suave para todos los enlaces de anclaje
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Desplazamiento para el encabezado fijo
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                         top: offsetPosition,
-                         behavior: "smooth"
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer para animaciones de entrada
-        const sections = document.querySelectorAll('.fade-in-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Countdown Timer Logic
-        const countdownElement = document.getElementById('countdown');
-        const daysElement = document.getElementById('days');
-        const hoursElement = document.getElementById('hours');
-        const minutesElement = document.getElementById('minutes');
-        const secondsElement = document.getElementById('seconds');
-
-        const launchDate = new Date();
-        launchDate.setDate(launchDate.getDate() + 14); // Set launch date to 14 days from now
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate.getTime() - now;
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                countdownElement.innerHTML = "<span class=\"text-purple-400\">¡Aloha Academy ha sido lanzada!</span>";
-                return;
+        // Navbar transparent to solid on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-brand-dark/90', 'bg-brand-dark');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-brand-dark', 'bg-brand-dark/90');
             }
+        });
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Lógica del Carrusel Interactivo
+        let currentSlide = 1;
+        let carouselInterval = setInterval(() => toggleCarousel(false), 4000); 
 
-            daysElement.textContent = String(days).padStart(2, '0');
-            hoursElement.textContent = String(hours).padStart(2, '0');
-            minutesElement.textContent = String(minutes).padStart(2, '0');
-            secondsElement.textContent = String(seconds).padStart(2, '0');
+        function toggleCarousel(isManual = false) {
+            const img1 = document.getElementById('carousel-img-1');
+            const img2 = document.getElementById('carousel-img-2');
+            const dot1 = document.getElementById('dot-1');
+            const dot2 = document.getElementById('dot-2');
+
+            if (!img1 || !img2) return;
+
+            if (currentSlide === 1) {
+                img1.classList.replace('opacity-100', 'opacity-0');
+                img2.classList.replace('opacity-0', 'opacity-100');
+                dot1.classList.replace('w-6', 'w-2');
+                dot1.classList.replace('bg-white', 'bg-white/50');
+                dot2.classList.replace('w-2', 'w-6');
+                dot2.classList.replace('bg-white/50', 'bg-white');
+                currentSlide = 2;
+            } else {
+                img1.classList.replace('opacity-0', 'opacity-100');
+                img2.classList.replace('opacity-100', 'opacity-0');
+                dot1.classList.replace('w-2', 'w-6');
+                dot1.classList.replace('bg-white/50', 'bg-white');
+                dot2.classList.replace('w-6', 'w-2');
+                dot2.classList.replace('bg-white', 'bg-white/50');
+                currentSlide = 1;
+            }
+            
+            if (isManual) {
+                clearInterval(carouselInterval);
+                carouselInterval = setInterval(() => toggleCarousel(false), 4000);
+            }
         }
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call to display immediately
     </script>
-
-    <script>
-        const waitlistForm = document.getElementById('waitlistForm');
-        const thankYouMessage = document.getElementById('thankYouMessage');
-
-        waitlistForm.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const formData = new FormData(waitlistForm);
-            const formUrl = waitlistForm.action;
-
-            try {
-                const response = await fetch(formUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    waitlistForm.reset(); // Clear the form
-                    waitlistForm.classList.add('hidden'); // Hide the form
-                    thankYouMessage.classList.remove('hidden'); // Show thank you message
-                } else {
-                    // Handle errors, e.g., display a message to the user
-                    console.error('Form submission failed:', response.statusText);
-                    alert('Hubo un error al enviar tu correo. Por favor, inténtalo de nuevo.');
-                }
-            } catch (error) {
-                console.error('Network error:', error);
-                alert('Hubo un error de red. Por favor, inténtalo de nuevo.');
-            }
-        });
-    </script>
-
 </body>
 </html>
