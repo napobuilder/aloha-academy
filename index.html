@@ -93,14 +93,14 @@
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-white">
 
-    <!-- Navigation (Dark) -->
-    <nav class="fixed w-full top-0 z-50 bg-brand-dark/90 backdrop-blur-lg border-b border-white/10 py-4 transition-all duration-300" id="navbar">
+    <!-- Navigation (Dynamic Glassmorphism) -->
+    <nav class="fixed w-full top-0 z-50 transition-all duration-500 bg-brand-dark/90 backdrop-blur-lg border-b border-white/10 py-4 text-white" id="navbar">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2.5 text-white">
-                <img src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto brightness-0 invert">
+            <a href="#" class="flex items-center gap-2.5">
+                <img id="nav-logo" src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto brightness-0 invert transition-all duration-500">
                 <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
             </a>
-            <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20ahora%20con%20Aloha%20Digital." target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-brand-100 hover:shadow-float transition-all duration-300">
+            <a id="nav-cta" href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20ahora%20con%20Aloha%20Digital." target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-brand-100 hover:shadow-float transition-all duration-300">
                 Quiero empezar ahora
             </a>
         </div>
@@ -149,7 +149,7 @@
             <div class="w-16 h-1.5 bg-brand-200 rounded-full mx-auto mb-10 md:mb-16 opacity-50"></div>
 
             <!-- Message / Problem Section (High-End Editorial Layout) -->
-            <section class="py-16 md:py-24 px-6 relative overflow-hidden">
+            <section class="py-16 md:py-24 px-6 relative overflow-hidden border-b border-brand-100/30">
                 <!-- Luces decorativas fondo -->
                 <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
                 <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
@@ -172,7 +172,7 @@
                     <div class="relative w-full max-w-6xl mx-auto mt-12 md:mt-24">
                         
                         <!-- Bloque de Texto Principal (Fondo Glassmorphism) -->
-                        <div class="md:w-3/4 md:ml-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2.5rem] p-8 md:p-16 lg:p-20 relative z-0 md:pl-40 lg:pl-56 mt-32 md:mt-0">
+                        <div class="md:w-3/4 md:ml-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2.5rem] p-8 md:p-16 lg:p-20 relative z-0 md:pl-40 lg:pl-56 mt-32 md:mt-0 md:min-h-[500px]">
                             
                             <!-- Párrafo introductorio gigante -->
                             <p class="text-2xl md:text-4xl text-text-main leading-tight mb-10 relative font-medium">
@@ -190,7 +190,7 @@
                                         A diferencia de las agencias tradicionales, no nos limitamos a "publicar por publicar". Diseñamos una estética que refleja la exclusividad real de tu inventario inmobiliario.
                                     </p>
                                 </div>
-                                <div>
+                                <div class="md:pb-16 lg:pb-0"> <!-- Añadido padding para asegurar espacio si el texto es corto -->
                                     <p class="mb-6">
                                         Tu marca personal se convierte en la herramienta de ventas más poderosa. Tú aportas el conocimiento y el carisma; nosotros la dirección de arte, los guiones y la postproducción.
                                     </p>
@@ -229,8 +229,8 @@
                             </div>
                         </div>
 
-                        <!-- Pull-Quote Flotante Abajo a la derecha -->
-                        <div class="relative md:absolute bottom-auto md:-bottom-16 right-auto md:right-10 bg-brand-dark p-8 rounded-3xl shadow-float border border-white/10 w-full md:w-[380px] z-30 transform md:-rotate-1 mt-12 md:mt-0 mx-auto md:mx-0 max-w-sm md:max-w-none">
+                        <!-- Pull-Quote Flotante Abajo a la izquierda (llenando el hueco) -->
+                        <div class="relative md:absolute bottom-auto md:bottom-8 right-auto md:left-6 lg:left-12 bg-brand-dark p-8 rounded-3xl shadow-float border border-white/10 w-full md:w-[360px] lg:w-[380px] z-30 transform md:-rotate-1 mt-12 md:mt-0 mx-auto md:mx-0 max-w-sm md:max-w-none">
                             <i data-lucide="quote" class="absolute top-6 left-6 w-10 h-10 text-white/10"></i>
                             <p class="text-white text-lg relative z-10 leading-relaxed text-center mt-2 font-medium">
                                 "El objetivo es que cuando un cliente piense en bienes raíces en tu zona, tu rostro sea lo primero que venga a su mente."
@@ -242,7 +242,7 @@
             </section>
 
             <!-- Sección: Cómo Funciona (Híbrida: Tarjetas en Móvil / Sticky en Desktop) -->
-            <section id="como-funciona" class="py-24 px-6 bg-brand-light">
+            <section id="como-funciona" class="py-24 px-6 bg-brand-light relative z-10">
                 <div class="max-w-7xl mx-auto">
                     
                     <div class="text-center mb-16 md:mb-24">
@@ -467,18 +467,24 @@
                 </div>
             </section>
 
-            <!-- Services Section -->
-            <section id="servicios" class="py-32 px-6">
+            <!-- Services Section (Ecosistema Digital - Stacking over previous) -->
+            <section id="servicios" class="py-32 px-6 relative z-20 bg-gradient-to-b from-purple-50/80 to-brand-100 shadow-[0_-20px_50px_rgba(0,0,0,0.03)] rounded-t-[3rem] md:rounded-t-[4rem]">
                 <div class="max-w-7xl mx-auto">
                     <div class="text-center mb-20">
-                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-text-main">Ecosistema Digital</h2>
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6 shadow-sm bg-white/50 backdrop-blur-sm">
+                            Nuestro Enfoque
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-text-main">Ecosistema Digital</h2>
                         <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">Todo lo que necesitas para destacar en el sector inmobiliario, centralizado en un solo equipo de expertos.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Service 1 -->
-                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
-                            <div class="w-14 h-14 bg-brand-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
+                            <!-- Brillo decorativo superior -->
+                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            
+                            <div class="w-16 h-16 bg-gradient-to-br from-brand-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-brand-50">
                                 <i data-lucide="video" class="w-7 h-7 text-brand-600"></i>
                             </div>
                             <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">TikTok & Reels</h3>
@@ -488,8 +494,10 @@
                         </div>
 
                         <!-- Service 2 -->
-                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
-                            <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
+                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                            <div class="w-16 h-16 bg-gradient-to-br from-pink-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-pink-50">
                                 <i data-lucide="layout-grid" class="w-7 h-7 text-pink-500"></i>
                             </div>
                             <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Branding Exclusivo</h3>
@@ -499,13 +507,15 @@
                         </div>
 
                         <!-- Service 3 -->
-                        <div class="bg-white border-none p-10 rounded-[2rem] shadow-soft hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden">
-                            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-8 relative z-10">
+                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
+                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-purple-50">
                                 <i data-lucide="mouse-pointer-click" class="w-7 h-7 text-purple-600"></i>
                             </div>
-                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Ads & Presencia Web</h3>
+                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Presencia Web Elite</h3>
                             <p class="text-text-muted leading-relaxed font-medium relative z-10">
-                                Campañas en Meta Ads (FB/IG) conectadas a Landing Pages de alto impacto visual para destacar tus desarrollos estrella y aumentar tu alcance en el mercado.
+                                Landing Pages de alto impacto visual, optimizadas para destacar tus desarrollos estrella, captar leads calificados y aumentar tu prestigio en el mercado inmobiliario.
                             </p>
                         </div>
                     </div>
@@ -527,7 +537,13 @@
                         
                         <!-- Mockup 1 -->
                         <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate Reel">
+                            <video id="mockup-video-1" src="./IMG_4925.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
+                            
+                            <!-- Botón Mute/Unmute -->
+                            <button onclick="toggleVideoMute('mockup-video-1', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
+                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
+                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
+                            </button>
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white">
                                 <div class="flex items-center gap-2 mb-3">
@@ -542,7 +558,13 @@
 
                         <!-- Mockup 2 -->
                         <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <img src="https://images.unsplash.com/photo-1628611225249-6c3c7c689552?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate TikTok">
+                            <video id="mockup-video-2" src="./IMG_5552%20(1).mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
+                            
+                            <!-- Botón Mute/Unmute -->
+                            <button onclick="toggleVideoMute('mockup-video-2', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
+                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
+                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
+                            </button>
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <div class="w-16 h-16 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center">
@@ -562,7 +584,13 @@
 
                         <!-- Mockup 3 -->
                         <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=400" width="400" height="711" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Real Estate Reel">
+                            <video id="mockup-video-3" src="./IMG_5751.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
+                            
+                            <!-- Botón Mute/Unmute -->
+                            <button onclick="toggleVideoMute('mockup-video-3', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
+                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
+                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
+                            </button>
                             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white">
                                 <div class="flex items-center gap-2 mb-3">
@@ -607,6 +635,11 @@
                                 <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> Optimización de Biografía</li>
                                 <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> 12 Posts Mensuales</li>
                                 <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0"></i> Creación de copys persuasivos</li>
+                                <li class="flex items-start gap-3 pt-2 mt-2 border-t border-gray-100">
+                                    <span class="inline-flex items-center gap-1.5 text-xs text-brand-600 bg-brand-50 px-2 py-1 rounded-md">
+                                        <i data-lucide="leaf" class="w-3.5 h-3.5"></i> Crecimiento 100% Orgánico
+                                    </span>
+                                </li>
                             </ul>
                             <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Presencia." target="_blank" rel="noopener noreferrer" class="block text-center bg-brand-light text-brand-600 py-4 rounded-xl font-extrabold hover:bg-brand-100 transition-colors w-full">Seleccionar</a>
                         </div>
@@ -676,15 +709,38 @@
         // Init Lucide Icons
         lucide.createIcons();
 
-        // Navbar transparent to solid on scroll
+        // Navbar transparent to solid on scroll (Dynamic Glassmorphism)
         const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        const navCta = document.getElementById('nav-cta');
+        const heroSection = document.querySelector('section.sticky.top-0'); // El Hero
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.replace('bg-brand-dark/90', 'bg-brand-dark');
+            // Calculamos cuándo el usuario sale del Hero (aprox la altura del hero)
+            const heroHeight = window.innerHeight; // O heroSection.offsetHeight
+            
+            if (window.scrollY > heroHeight - 100) {
+                // Estamos en las secciones claras (Glassmorphism claro)
+                navbar.classList.remove('bg-brand-dark/90', 'border-white/10', 'text-white');
+                navbar.classList.add('bg-white/70', 'border-brand-200/50', 'text-text-main', 'shadow-soft');
+                
+                // Cambiar Logo a oscuro
+                navLogo.classList.remove('brightness-0', 'invert');
+                
+                // Cambiar botón a diseño oscuro
+                navCta.classList.remove('bg-white', 'text-brand-dark');
+                navCta.classList.add('bg-brand-dark', 'text-white');
             } else {
-                navbar.classList.remove('shadow-md');
-                navbar.classList.replace('bg-brand-dark', 'bg-brand-dark/90');
+                // Estamos en el Hero Morado (Glassmorphism oscuro)
+                navbar.classList.add('bg-brand-dark/90', 'border-white/10', 'text-white');
+                navbar.classList.remove('bg-white/70', 'border-brand-200/50', 'text-text-main', 'shadow-soft');
+                
+                // Cambiar Logo a blanco
+                navLogo.classList.add('brightness-0', 'invert');
+                
+                // Cambiar botón a diseño blanco
+                navCta.classList.add('bg-white', 'text-brand-dark');
+                navCta.classList.remove('bg-brand-dark', 'text-white');
             }
         });
 
@@ -776,6 +832,41 @@
         }, observerOptions);
 
         desktopSteps.forEach(step => stepObserver.observe(step));
+
+        // Función para controlar el mute de los videos de manera individual
+        function toggleVideoMute(videoId, btn) {
+            const video = document.getElementById(videoId);
+            if (!video) return;
+
+            // Si vamos a desmutear, primero muteamos cualquier otro video que esté sonando
+            if (video.muted) {
+                document.querySelectorAll('video[id^="mockup-video"]').forEach(v => {
+                    if (v.id !== videoId) {
+                        v.muted = true;
+                        const otherBtn = v.parentElement.querySelector('button');
+                        if (otherBtn) {
+                            otherBtn.querySelector('.icon-muted').classList.replace('hidden', 'block');
+                            otherBtn.querySelector('.icon-unmuted').classList.replace('block', 'hidden');
+                        }
+                    }
+                });
+            }
+
+            // Alternar el estado de mute
+            video.muted = !video.muted;
+            
+            // Actualizar iconos
+            const iconMuted = btn.querySelector('.icon-muted');
+            const iconUnmuted = btn.querySelector('.icon-unmuted');
+
+            if (video.muted) {
+                iconMuted.classList.replace('hidden', 'block');
+                iconUnmuted.classList.replace('block', 'hidden');
+            } else {
+                iconMuted.classList.replace('block', 'hidden');
+                iconUnmuted.classList.replace('hidden', 'block');
+            }
+        }
 
     </script>
 </body>
