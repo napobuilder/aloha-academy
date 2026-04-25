@@ -148,73 +148,44 @@
             <!-- Decoración superior (pequeña píldora) -->
             <div class="w-16 h-1.5 bg-brand-200 rounded-full mx-auto mb-10 md:mb-16 opacity-50"></div>
 
-            <!-- Message / Problem Section (Editorial / Magazine Layout) -->
-            <section class="py-12 px-6">
-                <div class="max-w-7xl mx-auto">
+            <!-- Message / Problem Section (High-End Editorial Layout) -->
+            <section class="py-16 md:py-24 px-6 relative overflow-hidden">
+                <!-- Luces decorativas fondo -->
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto relative z-10">
                     
                     <!-- Magazine Header -->
-                    <div class="mb-12 md:mb-16 pb-8 border-b border-brand-200/60 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100/80 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6">
-                                La Experiencia Digital
-                            </div>
-                            <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight text-text-main leading-none">La imagen <br class="hidden md:block">lo es todo.</h2>
+                    <div class="mb-20 flex flex-col items-center text-center">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-8 shadow-sm bg-white/50 backdrop-blur-sm">
+                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                            La Experiencia Digital
                         </div>
-                        <div class="md:text-right max-w-sm">
-                            <p class="text-text-muted font-medium text-lg">Un enfoque editorial y estratégico para posicionar tu perfil por encima del ruido del mercado.</p>
-                        </div>
+                        <h2 class="text-6xl md:text-8xl font-black tracking-tight text-text-main leading-[1.1]">
+                            La imagen <br class="hidden md:block">
+                            <span class="text-brand-600 font-extrabold">lo es todo.</span>
+                        </h2>
                     </div>
 
-                    <!-- Editorial Grid (Lado a lado asegurado) -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 items-start">
+                    <!-- Editorial Asymmetric Grid -->
+                    <div class="relative w-full max-w-6xl mx-auto mt-12 md:mt-24">
                         
-                        <!-- Columna Izquierda: Retrato & Perfil (Fijo a la izquierda) -->
-                        <div class="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
-                            <div class="relative w-full max-w-[340px] mx-auto md:mx-0">
-                                <!-- Fondo decorativo rotado (Dirección izquierda) -->
-                                <div class="absolute -inset-3 bg-gradient-to-tr from-brand-100 to-pink-100 rounded-[2.5rem] transform -rotate-2 z-0"></div>
-                                
-                                <!-- Carrusel Interactivo -->
-                                <div class="relative z-10 rounded-[2rem] shadow-soft w-full aspect-[4/5] overflow-hidden group cursor-pointer" onclick="toggleCarousel(true)" role="button" aria-label="Cambiar foto de perfil" tabindex="0" onkeydown="if(event.key==='Enter') toggleCarousel(true)">
-                                    <img id="carousel-img-1" src="https://i.imgur.com/WtHgKui.jpeg" alt="Andrea Guevara Aloha Digital 1" width="340" height="425" class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 opacity-100">
-                                    <img id="carousel-img-2" src="https://i.imgur.com/SubUAwm.jpeg" alt="Andrea Guevara Aloha Digital 2" width="340" height="425" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 opacity-0">
-                                    
-                                    <!-- Controles -->
-                                    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20" aria-hidden="true">
-                                        <div id="dot-1" class="w-6 h-1.5 rounded-full bg-white transition-all duration-300 shadow-sm"></div>
-                                        <div id="dot-2" class="w-2 h-1.5 rounded-full bg-white/50 transition-all duration-300 shadow-sm"></div>
-                                    </div>
-                                    
-                                    <!-- Overlay -->
-                                    <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                        <div class="bg-white/90 backdrop-blur-sm text-brand-dark px-4 py-2 rounded-full font-bold text-xs shadow-lg flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                                            <i data-lucide="mouse-pointer-click" class="w-3 h-3 text-brand-600"></i> Ver más
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Firma / Crédito Editorial (Alineado a la izquierda como revista) -->
-                            <div class="w-full max-w-[340px] mx-auto md:mx-0 flex flex-col pt-4 border-t-2 border-brand-200/80 text-center md:text-left">
-                                <p class="font-extrabold text-text-main text-xl tracking-tight">Andrea Guevara</p>
-                                <p class="text-xs text-brand-600 font-extrabold tracking-widest uppercase mt-1">Directora de Aloha Digital</p>
-                            </div>
-                        </div>
-
-                        <!-- Columna Derecha: Texto Editorial -->
-                        <div class="md:col-span-7 lg:col-span-8 flex flex-col gap-8 md:pt-2">
+                        <!-- Bloque de Texto Principal (Fondo Glassmorphism) -->
+                        <div class="md:w-3/4 md:ml-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2.5rem] p-8 md:p-16 lg:p-20 relative z-0 md:pl-40 lg:pl-56 mt-32 md:mt-0">
+                            
                             <!-- Párrafo introductorio gigante -->
-                            <p class="text-2xl md:text-3xl font-medium text-text-main leading-snug">
-                                Qué gusto saludarte. Entendemos perfectamente lo que buscas: no quieres ser "un agente más" subiendo fotos de casas. <span class="text-brand-600">Quieres posicionarte como una autoridad en tu nicho.</span>
+                            <p class="text-2xl md:text-4xl text-text-main leading-tight mb-10 relative font-medium">
+                                <span class="absolute -top-10 -left-6 text-brand-200 text-8xl opacity-50">"</span>
+                                Qué gusto saludarte. Entendemos perfectamente lo que buscas: no quieres ser <span class="text-text-muted">"un agente más"</span> subiendo fotos de casas. <span class="text-brand-600 font-extrabold">Quieres posicionarte como una autoridad en tu nicho.</span>
                             </p>
                             
-                            <!-- Cuerpo del texto dividido en 2 columnas en pantallas grandes -->
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 text-text-muted text-base lg:text-lg leading-relaxed font-medium">
+                            <!-- Cuerpo del texto dividido -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-text-muted text-base lg:text-lg leading-relaxed font-medium">
                                 <div>
                                     <p class="mb-6">
-                                        Hoy en día, tus compradores ideales están en <strong>Instagram y TikTok</strong>. Buscan conectar con la persona detrás de la propiedad antes de tomar una decisión de inversión. Nosotros construimos ese puente visual y estratégico.
+                                        Hoy en día, tus compradores ideales están en <strong class="text-text-main">Instagram y TikTok</strong>. Buscan conectar con la persona detrás de la propiedad antes de tomar una decisión de inversión. Nosotros construimos ese puente visual y estratégico.
                                     </p>
-                                    <div class="h-px w-12 bg-brand-200 my-6"></div>
                                     <p>
                                         A diferencia de las agencias tradicionales, no nos limitamos a "publicar por publicar". Diseñamos una estética que refleja la exclusividad real de tu inventario inmobiliario.
                                     </p>
@@ -223,22 +194,54 @@
                                     <p class="mb-6">
                                         Tu marca personal se convierte en la herramienta de ventas más poderosa. Tú aportas el conocimiento y el carisma; nosotros la dirección de arte, los guiones y la postproducción.
                                     </p>
-                                    <!-- Cita destacada (Pull-quote) -->
-                                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-brand-100/50 relative mt-4">
-                                        <i data-lucide="quote" class="absolute top-4 right-4 w-8 h-8 text-brand-50"></i>
-                                        <p class="text-brand-900 text-sm md:text-base font-semibold italic relative z-10 leading-relaxed">
-                                            "El objetivo es que cuando un cliente piense en bienes raíces en tu zona, tu rostro sea lo primero que venga a su mente."
-                                        </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Columna Izquierda Flotante: Retrato & Perfil (Rompiendo la grilla) -->
+                        <div class="md:absolute top-[-80px] left-0 w-full md:w-[380px] lg:w-[420px] z-20 flex flex-col gap-6 -mt-64 md:mt-0 px-6 md:px-0">
+                            
+                            <div class="relative w-full mx-auto">
+                                <!-- Deco Shadow -->
+                                <div class="absolute -inset-4 bg-gradient-to-br from-brand-300/40 to-pink-300/40 rounded-[2.5rem] transform rotate-3 blur-lg -z-10"></div>
+                                
+                                <!-- Carrusel Interactivo -->
+                                <div class="relative z-10 rounded-[2rem] shadow-2xl w-full aspect-[4/5] overflow-hidden group cursor-pointer border-[6px] border-white/80" onclick="toggleCarousel(true)" role="button" aria-label="Cambiar foto de perfil" tabindex="0" onkeydown="if(event.key==='Enter') toggleCarousel(true)">
+                                    <img id="carousel-img-1" src="https://i.imgur.com/WtHgKui.jpeg" alt="Andrea Guevara Aloha Digital 1" width="400" height="500" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 opacity-100 group-hover:scale-105">
+                                    <img id="carousel-img-2" src="https://i.imgur.com/SubUAwm.jpeg" alt="Andrea Guevara Aloha Digital 2" width="400" height="500" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 opacity-0 group-hover:scale-105">
+                                    
+                                    <!-- Gradiente suave abajo -->
+                                    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-dark/60 to-transparent pointer-events-none"></div>
+
+                                    <!-- Controles minimalistas -->
+                                    <div class="absolute bottom-6 inset-x-0 flex justify-center gap-2 z-20" aria-hidden="true">
+                                        <div id="dot-1" class="w-8 h-1 rounded-full bg-white transition-all duration-500 shadow-sm"></div>
+                                        <div id="dot-2" class="w-2 h-1 rounded-full bg-white/40 transition-all duration-500 shadow-sm"></div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Firma Flotante (Glassmorphism) -->
+                            <div class="absolute -bottom-6 -right-6 md:-right-12 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 w-[240px] transform rotate-2 z-30">
+                                <p class="font-extrabold text-text-main text-2xl tracking-tight mb-1">Andrea Guevara</p>
+                                <p class="text-[10px] text-brand-600 font-extrabold tracking-widest uppercase">Directora de Aloha Digital</p>
+                            </div>
+                        </div>
+
+                        <!-- Pull-Quote Flotante Abajo a la derecha -->
+                        <div class="hidden md:block absolute -bottom-16 right-10 bg-brand-dark p-8 rounded-3xl shadow-float border border-white/10 w-[380px] z-30 transform -rotate-1">
+                            <i data-lucide="quote" class="absolute top-6 left-6 w-10 h-10 text-white/10"></i>
+                            <p class="text-white text-lg relative z-10 leading-relaxed text-center mt-2 font-medium">
+                                "El objetivo es que cuando un cliente piense en bienes raíces en tu zona, tu rostro sea lo primero que venga a su mente."
+                            </p>
                         </div>
 
                     </div>
                 </div>
             </section>
 
-            <!-- Sección: Cómo Funciona (Sticky Scroll) -->
+            <!-- Sección: Cómo Funciona (Híbrida: Tarjetas en Móvil / Sticky en Desktop) -->
             <section id="como-funciona" class="py-24 px-6 bg-brand-light">
                 <div class="max-w-7xl mx-auto">
                     
@@ -247,18 +250,122 @@
                         <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">Procesos simples. Cero estrés. Resultados visibles.</p>
                     </div>
 
-                    <!-- Layout: Izquierda pegajosa (Imágenes), Derecha (Pasos) -->
-                    <div class="flex flex-col md:flex-row gap-12 lg:gap-20 items-start">
+                    <!-- ============================================== -->
+                    <!-- VERSIÓN MÓVIL: Tarjetas Apiladas (Oculto en md:) -->
+                    <!-- ============================================== -->
+                    <div class="flex flex-col gap-8 md:hidden">
+                        
+                        <!-- Tarjeta Paso 1 -->
+                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
+                            <!-- Visual Móvil 1 -->
+                            <div class="h-48 bg-brand-dark relative flex items-center justify-center p-6 overflow-hidden">
+                                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-brand-600 rounded-full blur-[60px] opacity-30"></div>
+                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 text-center">
+                                    <i data-lucide="target" class="w-8 h-8 text-brand-400 mx-auto mb-2"></i>
+                                    <div class="w-12 h-1 bg-brand-accent rounded-full mx-auto mb-2"></div>
+                                    <p class="text-brand-100 text-xs font-bold uppercase tracking-wider">Estrategia</p>
+                                </div>
+                            </div>
+                            <!-- Contenido Móvil 1 -->
+                            <div class="p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">1</div>
+                                    <h3 class="text-2xl font-extrabold text-text-main">Onboarding Estratégico</h3>
+                                </div>
+                                <p class="text-text-muted leading-relaxed font-medium">Taller inicial donde definimos tu cliente ideal, el tono de tu marca personal y los tipos de propiedades/zonas que deseas destacar.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Paso 2 -->
+                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
+                            <!-- Visual Móvil 2 -->
+                            <div class="h-48 bg-brand-dark relative flex items-center justify-center p-6 overflow-hidden">
+                                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 text-center">
+                                    <i data-lucide="smartphone" class="w-8 h-8 text-pink-400 mx-auto mb-2"></i>
+                                    <div class="flex gap-2 justify-center mt-2">
+                                        <div class="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></div>
+                                        <span class="text-white text-[10px] font-bold tracking-widest uppercase">REC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Contenido Móvil 2 -->
+                            <div class="p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center font-black text-lg shrink-0">2</div>
+                                    <h3 class="text-2xl font-extrabold text-text-main">Guiones y Grabación</h3>
+                                </div>
+                                <p class="text-text-muted leading-relaxed font-medium">Te enviamos guiones probados. Tú te grabas fácilmente desde tu celular, nos envías el material en crudo y nosotros nos encargamos del resto.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Paso 3 -->
+                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
+                            <!-- Visual Móvil 3 -->
+                            <div class="h-48 bg-brand-dark relative flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+                                <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-10 border border-white/30">
+                                    <i data-lucide="scissors" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            <!-- Contenido Móvil 3 -->
+                            <div class="p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">3</div>
+                                    <h3 class="text-2xl font-extrabold text-text-main">Edición y Ejecución</h3>
+                                </div>
+                                <p class="text-text-muted leading-relaxed font-medium">Hacemos la postproducción, diseñamos tu feed, publicamos y optimizamos los copys. Tú solo te ocupas de mostrar propiedades y cerrar ventas.</p>
+                                <div class="mt-4 inline-block bg-brand-50 px-3 py-1 rounded-full text-brand-600 text-sm font-bold">Nada se publica sin tu OK.</div>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Paso 4 -->
+                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
+                            <!-- Visual Móvil 4 -->
+                            <div class="h-48 bg-brand-dark relative flex items-center justify-center p-6 overflow-hidden">
+                                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-5 text-center">
+                                    <div class="w-full space-y-2">
+                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
+                                            <div class="h-full bg-green-400 w-3/4"></div>
+                                        </div>
+                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
+                                            <div class="h-full bg-green-400 w-5/6"></div>
+                                        </div>
+                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
+                                            <div class="h-full bg-green-400 w-1/2"></div>
+                                        </div>
+                                    </div>
+                                    <i data-lucide="trending-up" class="w-6 h-6 text-green-400 mx-auto mt-3"></i>
+                                </div>
+                            </div>
+                            <!-- Contenido Móvil 4 -->
+                            <div class="p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-10 h-10 bg-green-50 text-green-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">4</div>
+                                    <h3 class="text-2xl font-extrabold text-text-main">Reporte Mensual</h3>
+                                </div>
+                                <p class="text-text-muted leading-relaxed font-medium">Revisamos métricas reales: visualizaciones en TikTok, engagement y alcance en IG. Ajustamos la estrategia para el mes siguiente con datos concretos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ============================================== -->
+                    <!-- VERSIÓN DESKTOP: Sticky Scroll (Oculto en <md) -->
+                    <!-- ============================================== -->
+                    <div class="hidden md:flex gap-12 lg:gap-20 items-start">
                         
                         <!-- Columna Izquierda: Sticky Media (Sticky) -->
-                        <div class="w-full md:w-1/2 md:sticky top-32 h-[400px] md:h-[600px] bg-brand-dark rounded-[2.5rem] shadow-float overflow-hidden relative flex items-center justify-center p-8">
+                        <div class="w-1/2 sticky top-32 h-[600px] bg-brand-dark rounded-[2.5rem] shadow-float overflow-hidden relative flex items-center justify-center p-8">
                             
                             <!-- Fondos decorativos -->
                             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-brand-600 rounded-full blur-[100px] opacity-30"></div>
 
-                            <!-- Contenedores de estado (se animarán con JS o CSS scroll-timeline si es posible, pero haremos una versión simple con opacidad y JS) -->
-                            <div id="media-step-1" class="absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-100">
+                            <!-- Contenedores de estado -->
+                            <div id="media-step-1" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-100">
                                 <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl flex flex-col items-center justify-center text-center p-6 transform hover:scale-105 transition-transform">
                                     <div class="w-20 h-20 bg-brand-100 rounded-full flex items-center justify-center mb-6">
                                         <i data-lucide="target" class="w-10 h-10 text-brand-600"></i>
@@ -269,7 +376,7 @@
                                 </div>
                             </div>
 
-                            <div id="media-step-2" class="absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
+                            <div id="media-step-2" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
                                 <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl flex flex-col items-center justify-center text-center p-6">
                                     <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mb-6">
                                         <i data-lucide="smartphone" class="w-10 h-10 text-pink-500"></i>
@@ -282,14 +389,16 @@
                                 </div>
                             </div>
 
-                            <div id="media-step-3" class="absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
+                            <div id="media-step-3" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
                                 <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex items-center justify-center relative">
-                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                    <i data-lucide="scissors" class="w-16 h-16 text-white relative z-10 animate-bounce"></i>
+                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400" width="400" height="400" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
+                                    <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-10 border border-white/30">
+                                        <i data-lucide="scissors" class="w-10 h-10 text-white"></i>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div id="media-step-4" class="absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
+                            <div id="media-step-4" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
                                 <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl flex flex-col items-center justify-center text-center p-6">
                                     <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
                                         <i data-lucide="bar-chart-3" class="w-10 h-10 text-green-600"></i>
@@ -310,13 +419,13 @@
                         </div>
 
                         <!-- Columna Derecha: Pasos de Texto -->
-                        <div class="w-full md:w-1/2 py-10 md:py-[10vh]">
-                            <div class="flex flex-col gap-24 relative">
+                        <div class="w-1/2 py-[10vh]">
+                            <div class="flex flex-col gap-32 relative">
                                 <!-- Línea conectora -->
-                                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-brand-200 hidden md:block"></div>
+                                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-brand-200"></div>
 
                                 <!-- Paso 1 -->
-                                <div class="step-item relative flex gap-8 opacity-100 transition-opacity duration-500" data-step="1">
+                                <div class="desktop-step-item relative flex gap-8 opacity-100 transition-opacity duration-500" data-step="1">
                                     <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10 shadow-md">1</div>
                                     <div>
                                         <h3 class="text-3xl font-extrabold mb-4 text-text-main">Onboarding Estratégico</h3>
@@ -325,7 +434,7 @@
                                 </div>
 
                                 <!-- Paso 2 -->
-                                <div class="step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="2">
+                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="2">
                                     <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">2</div>
                                     <div>
                                         <h3 class="text-3xl font-extrabold mb-4 text-text-main">Guiones y Grabación</h3>
@@ -334,7 +443,7 @@
                                 </div>
 
                                 <!-- Paso 3 -->
-                                <div class="step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="3">
+                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="3">
                                     <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">3</div>
                                     <div>
                                         <h3 class="text-3xl font-extrabold mb-4 text-text-main">Edición y Ejecución</h3>
@@ -343,7 +452,7 @@
                                 </div>
 
                                 <!-- Paso 4 -->
-                                <div class="step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="4">
+                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="4">
                                     <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">4</div>
                                     <div>
                                         <h3 class="text-3xl font-extrabold mb-4 text-text-main">Reporte Mensual</h3>
@@ -594,18 +703,18 @@
             if (currentSlide === 1) {
                 img1.classList.replace('opacity-100', 'opacity-0');
                 img2.classList.replace('opacity-0', 'opacity-100');
-                dot1.classList.replace('w-6', 'w-2');
-                dot1.classList.replace('bg-white', 'bg-white/50');
-                dot2.classList.replace('w-2', 'w-6');
-                dot2.classList.replace('bg-white/50', 'bg-white');
+                dot1.classList.replace('w-8', 'w-2');
+                dot1.classList.replace('bg-white', 'bg-white/40');
+                dot2.classList.replace('w-2', 'w-8');
+                dot2.classList.replace('bg-white/40', 'bg-white');
                 currentSlide = 2;
             } else {
                 img1.classList.replace('opacity-0', 'opacity-100');
                 img2.classList.replace('opacity-100', 'opacity-0');
-                dot1.classList.replace('w-2', 'w-6');
-                dot1.classList.replace('bg-white/50', 'bg-white');
-                dot2.classList.replace('w-6', 'w-2');
-                dot2.classList.replace('bg-white', 'bg-white/50');
+                dot1.classList.replace('w-2', 'w-8');
+                dot1.classList.replace('bg-white/40', 'bg-white');
+                dot2.classList.replace('w-8', 'w-2');
+                dot2.classList.replace('bg-white', 'bg-white/40');
                 currentSlide = 1;
             }
             
@@ -615,29 +724,27 @@
             }
         }
 
-        // Lógica para el Scroll Activo de "Cómo Funciona"
-        const steps = document.querySelectorAll('.step-item');
-        const mediaSteps = [
-            document.getElementById('media-step-1'),
-            document.getElementById('media-step-2'),
-            document.getElementById('media-step-3'),
-            document.getElementById('media-step-4')
-        ];
+        // Lógica para el Scroll Activo de "Cómo Funciona" (Solo Desktop)
+        const desktopSteps = document.querySelectorAll('.desktop-step-item');
+        const desktopMediaSteps = document.querySelectorAll('.desktop-media');
 
-        // Usamos IntersectionObserver para detectar qué paso está en el centro de la pantalla
+        // Solo inicializamos el observer si estamos en desktop (md: width > 768px aprox, o simplemente dejamos que corra, pero aplicamos a elementos de desktop)
         const observerOptions = {
             root: null,
-            rootMargin: '-30% 0px -30% 0px', // El elemento se activa cuando está en el 40% central de la pantalla
+            rootMargin: '-30% 0px -30% 0px', 
             threshold: 0.1
         };
 
         const stepObserver = new IntersectionObserver((entries) => {
+            // Verificamos que sea pantalla de escritorio para no sobrecargar en móvil
+            if (window.innerWidth < 768) return;
+
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const stepIndex = parseInt(entry.target.getAttribute('data-step')) - 1;
                     
-                    // 1. Activar el texto (opacidad y diseño del número)
-                    steps.forEach((step, idx) => {
+                    // 1. Activar el texto
+                    desktopSteps.forEach((step, idx) => {
                         const numberBadge = step.querySelector('div.w-12');
                         if (idx === stepIndex) {
                             step.classList.replace('opacity-40', 'opacity-100');
@@ -654,9 +761,8 @@
                         }
                     });
 
-                    // 2. Cambiar la imagen/media en la izquierda
-                    mediaSteps.forEach((media, idx) => {
-                        if (!media) return;
+                    // 2. Cambiar la imagen/media
+                    desktopMediaSteps.forEach((media, idx) => {
                         if (idx === stepIndex) {
                             media.classList.replace('opacity-0', 'opacity-100');
                             media.classList.remove('pointer-events-none');
@@ -669,7 +775,7 @@
             });
         }, observerOptions);
 
-        steps.forEach(step => stepObserver.observe(step));
+        desktopSteps.forEach(step => stepObserver.observe(step));
 
     </script>
 </body>
