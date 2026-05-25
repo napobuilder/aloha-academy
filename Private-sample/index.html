@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisión Privada | Aloha Digital</title>
+
+    <!-- SEO/Robots: prevent indexing of private page -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0e0720',
+                            mid: '#1a0e35',
+                            light: '#fdf8fa',
+                            accent: '#a855f7',
+                            glow: '#c084fc',
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            600: '#7c3aed',
+                            900: '#4c1d95',
+                        },
+                        pink: { 300: '#f9a8d4', 400: '#f472b6', 500: '#ec4899' },
+                    },
+                    boxShadow: {
+                        'float': '0 40px 80px -20px rgba(124, 58, 237, 0.5)',
+                        'glow': '0 0 50px rgba(168, 85, 247, 0.4)',
+                        'cta': '0 10px 40px -10px rgba(168, 85, 247, 0.6)',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        'fade-up': {
+                            '0%': { opacity: '0', transform: 'translateY(24px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-up': 'fade-up 0.7s ease-out both',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0e0720;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0e0720; }
+        ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 10px; }
+
+        /* Video aspect ratio vertical */
+        .video-wrap { aspect-ratio: 9 / 16; }
+
+        /* Ocultar controles de descarga del navegador nativo */
+        video::-webkit-media-controls-enclosure {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Animación delay para stagger */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.35s; }
+        .delay-4 { animation-delay: 0.5s; }
+        .delay-5 { animation-delay: 0.65s; }
+        .delay-6 { animation-delay: 0.8s; }
+
+        /* Gradiente de texto */
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glow badge */
+        .badge-ai {
+            background: linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(244,114,182,0.2) 100%);
+            border: 1px solid rgba(168,85,247,0.4);
+        }
+
+        /* Sound button states */
+        .sound-btn-muted {
+            background: rgba(0,0,0,0.55);
+            border-color: rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.85);
+            animation: sound-pulse 2.5s ease-in-out infinite;
+        }
+        .sound-btn-active {
+            background: rgba(168,85,247,0.35);
+            border-color: rgba(168,85,247,0.7);
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(168,85,247,0.5);
+            animation: none;
+        }
+        @keyframes sound-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.2); transform: translateX(-50%) scale(1); }
+            50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); transform: translateX(-50%) scale(1.04); }
+        }
+
+        /* Phone frame glow */
+        .phone-glow {
+            filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.4));
+        }
+
+        /* Prevent text selection on video area */
+        .no-select { user-select: none; -webkit-user-select: none; }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-brand-accent selection:text-white min-h-screen flex flex-col relative">
+
+    <!-- ══ BACKGROUND DECORATIVO ══ -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+        <!-- Blob principal morado -->
+        <div class="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full bg-brand-600 blur-[160px] opacity-25 animate-pulse-glow"></div>
+        <!-- Blob secundario pink -->
+        <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-pink-500 blur-[160px] opacity-15 animate-pulse-glow" style="animation-delay:1.5s"></div>
+        <!-- Blob central sutil -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-brand-900 blur-[120px] opacity-30"></div>
+        <!-- Grid pattern sutil -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(168,85,247,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.8) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <!-- ══ HEADER MINIMALISTA ══ -->
+    <header class="w-full py-5 px-6 relative z-20 border-b border-white/5 bg-brand-dark/40 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Logo + Wordmark -->
+            <div class="flex items-center gap-3">
+                <img src="./LOGO NUEVO DE ALOHA-01.png" alt="Aloha Digital" class="h-9 w-auto">
+                <span class="text-lg tracking-tight opacity-90 leading-none"><span class="font-light text-white/80">ALOHA</span> <span class="font-extrabold text-white">DIGITAL</span></span>
+            </div>
+
+            <!-- Badge: Enlace Privado -->
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full border border-brand-accent/25 bg-brand-900/40 backdrop-blur-sm">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
+                <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-100">Enlace Privado</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="flex-grow flex items-center justify-center py-14 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <!-- ══ COLUMNA IZQUIERDA: Copy y CTAs ══ -->
+            <div class="order-2 lg:order-1 text-center lg:text-left flex flex-col justify-center">
+
+                <!-- Tag: Muestra Exclusiva -->
+                <div class="inline-flex items-center gap-2 self-center lg:self-start px-4 py-1.5 rounded-full border border-pink-400/30 bg-pink-500/10 text-pink-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 animate-fade-up">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    Muestra Exclusiva · Edición Final
+                </div>
+
+                <!-- Headline personalizado -->
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-5 animate-fade-up delay-1">
+                    Hola,<br>
+                    <span class="gradient-text">María ✨</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-base md:text-lg text-white/60 mb-8 leading-relaxed font-light animate-fade-up delay-2 max-w-md mx-auto lg:mx-0">
+                    Preparamos este corte exclusivo para mostrarte el nivel de calidad, dinamismo y retención visual que aplicaríamos a tu contenido.
+                </p>
+
+                <!-- ══ CARDS DE NOTAS ══ -->
+                <div class="space-y-3 mb-10 animate-fade-up delay-3 max-w-md mx-auto lg:mx-0 w-full">
+
+                    <!-- Card 1: Gancho con IA -->
+                    <div class="badge-ai rounded-2xl p-4 flex items-start gap-3 no-select">
+                        <div class="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-brand-600/40 flex items-center justify-center ring-1 ring-brand-400/30">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-brand-300"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-brand-300 mb-0.5">Gancho de 3 segundos con IA ✦</p>
+                            <p class="text-xs text-white/55 leading-relaxed">
+                                El primer frame es tu foto animada con IA generativa (VEO). Esta técnica de alto impacto tiene un valor adicional al de los paquetes estándar.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Subtítulos + Color -->
+                    <div class="bg-white/4 border border-white/8 rounded-2xl p-4 flex items-start gap-3 no-select">
+                        <div class="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center ring-1 ring-emerald-400/20">
+                            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white/90 mb-0.5">Subtítulos dinámicos de alta retención</p>
+                            <p class="text-xs text-white/50 leading-relaxed">Corrección de color profesional y captions optimizados para maximizar el watch time.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Alta resolución -->
+                    <div class="bg-white/4 border border-white/8 rounded-2xl p-4 flex items-start gap-3 no-select">
+                        <div class="mt-0.5 flex-shrink-0 w-8 h-8 rounded-full bg-brand-600/30 flex items-center justify-center ring-1 ring-brand-400/20">
+                            <i data-lucide="info" class="w-4 h-4 text-brand-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white/90 mb-0.5">Entrega final en 4K · Sin marcas de agua</p>
+                            <p class="text-xs text-white/50 leading-relaxed">El archivo definitivo se entrega en máxima resolución al activar tu plan.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ══ CTAs ══ -->
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-up delay-4">
+                    <a
+                        id="btn-aprobar"
+                        href="https://wa.me/584128998666?text=Hola!%20Ya%20vi%20la%20muestra%20y%20me%20encant%C3%B3.%20Quiero%20elegir%20mi%20plan%20%F0%9F%9A%80"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative overflow-hidden bg-white text-brand-mid px-7 py-4 rounded-full font-extrabold text-sm hover:scale-105 transition-all duration-300 shadow-cta flex items-center justify-center gap-2"
+                    >
+                        <span class="relative z-10 flex items-center gap-2">
+                            Aprobar y elegir mi plan
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"></i>
+                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-300 to-pink-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </a>
+                    <a
+                        id="btn-comentarios"
+                        href="https://wa.me/584128998666?text=Hola!%20Estoy%20viendo%20la%20muestra,%20tengo%20unos%20comentarios%20%F0%9F%92%AC"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="bg-white/8 border border-white/15 text-white px-7 py-4 rounded-full font-semibold text-sm hover:bg-white/15 hover:border-white/25 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
+                    >
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Tengo comentarios
+                    </a>
+                </div>
+
+                <!-- Social proof / footer tip -->
+                <p class="text-[11px] text-white/30 mt-6 animate-fade-up delay-5 max-w-xs mx-auto lg:mx-0">
+                    🔒 Enlace confidencial · Solo para revisión privada
+                </p>
+            </div>
+
+            <!-- ══ COLUMNA DERECHA: Video Player ══ -->
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative animate-fade-up delay-2">
+
+                <!-- Glow detrás del teléfono -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-brand-600 blur-[90px] opacity-25 animate-pulse-glow pointer-events-none"></div>
+
+                <!-- Marco del teléfono flotante -->
+                <div class="relative phone-glow animate-float" style="max-width: 300px; width: 100%;">
+
+                    <!-- Phone frame -->
+                    <div class="relative bg-[#0a0a0a] rounded-[3rem] border-[10px] border-[#1c1c1e] shadow-float overflow-hidden video-wrap ring-1 ring-white/10 no-select">
+
+                        <!-- Dynamic island / notch -->
+                        <div class="absolute top-0 inset-x-0 h-8 flex justify-center z-30 pointer-events-none">
+                            <div class="w-28 h-7 bg-[#1c1c1e] rounded-b-3xl flex items-center justify-center gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#0a0a0a] ring-1 ring-white/5"></div>
+                                <div class="w-1 h-1 rounded-full bg-[#1a1a1a]"></div>
+                            </div>
+                        </div>
+
+                        <!-- ══ VIDEO PROTEGIDO · AUTOPLAY MUTED + LOOP ══ -->
+                        <video
+                            id="main-video"
+                            src="./video_web.mp4"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            disablepictureinpicture
+                            oncontextmenu="return false;"
+                            preload="auto"
+                            class="absolute inset-0 w-full h-full object-cover bg-black"
+                        >
+                            Tu navegador no soporta este formato de video.
+                        </video>
+
+                        <!-- ══ BOTÓN DE SONIDO FLOTANTE ══ -->
+                        <button
+                            id="btn-sound"
+                            aria-label="Activar sonido"
+                            class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 px-4 py-2.5 rounded-full backdrop-blur-md border transition-all duration-300 sound-btn-muted"
+                        >
+                            <span id="sound-icon" class="text-lg leading-none">🔇</span>
+                            <span id="sound-label" class="text-[11px] font-bold tracking-wide uppercase whitespace-nowrap">Activar sonido</span>
+                        </button>
+
+                        <!-- Overlay de borde interior del teléfono -->
+                        <div class="absolute inset-0 rounded-[2.2rem] ring-1 ring-inset ring-white/5 pointer-events-none z-10"></div>
+
+                    </div>
+
+                    <!-- Etiqueta flotante debajo del teléfono -->
+                    <div class="mt-5 flex justify-center">
+                        <div class="flex items-center gap-2 bg-brand-dark/80 border border-brand-accent/20 backdrop-blur-md px-4 py-2 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                            <span class="text-[11px] font-semibold text-brand-300 tracking-wide">Reproducción segura · Solo revisión</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="py-6 text-center relative z-10 border-t border-white/5">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2 text-[11px] text-white/25 font-medium">
+            <img src="./LOGO NUEVO DE ALOHA-01.png" alt="Aloha Digital" class="h-5 w-auto opacity-40">
+            <span>© 2026 Aloha Digital · Contenido confidencial para revisión exclusiva</span>
+        </div>
+    </footer>
+
+    <!-- ══ SCRIPTS ══ -->
+    <script>
+        // Inicializar iconos Lucide
+        lucide.createIcons();
+
+        // ── Toggle de Sonido ──
+        const video = document.getElementById('main-video');
+        const btnSound = document.getElementById('btn-sound');
+        const soundIcon = document.getElementById('sound-icon');
+        const soundLabel = document.getElementById('sound-label');
+
+        if (btnSound && video) {
+            btnSound.addEventListener('click', function () {
+                if (video.muted) {
+                    // Activar sonido
+                    video.muted = false;
+                    soundIcon.textContent = '🔊';
+                    soundLabel.textContent = 'Silenciar';
+                    btnSound.classList.remove('sound-btn-muted');
+                    btnSound.classList.add('sound-btn-active');
+                } else {
+                    // Silenciar
+                    video.muted = true;
+                    soundIcon.textContent = '🔇';
+                    soundLabel.textContent = 'Activar sonido';
+                    btnSound.classList.remove('sound-btn-active');
+                    btnSound.classList.add('sound-btn-muted');
+                }
+            });
+        }
+
+        // ── Protección: clic derecho bloqueado ──
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ── Protección: teclas de descarga/devtools ──
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && e.key === 's') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'J')
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ── Protección: bloquear drag del video ──
+        if (video) {
+            video.addEventListener('dragstart', e => e.preventDefault());
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/video.mp4
+  Cache-Control: no-store, no-cache, must-revalidate
+  Content-Disposition: inline; filename="preview.mp4"
+  X-Content-Type-Options: nosniff
+
+/index.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

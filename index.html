@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta de Valor | Aloha Digital</title>
+    <meta name="description" content="Aloha Digital. Agencia de marketing de alto rendimiento. Estrategia, diseño y ecosistemas digitales para marcas que lideran su sector.">
+    <title>Agencia Digital de Alto Rendimiento | Aloha Digital</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN para desarrollo) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -25,27 +26,36 @@
                     },
                     colors: {
                         brand: {
-                            dark: '#270e4e',     /* Morado Oscuro Fringe */
-                            light: '#fdf8fa',    /* Rosado/Morado Mega Clarito */
-                            accent: '#a855f7',   /* Acento vibrante */
+                            dark: '#270e4e',
+                            light: '#fdf8fa',
+                            accent: '#a855f7',
                             50: '#f5f3ff',
                             100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
                             600: '#7c3aed',
                             900: '#4c1d95',
                         },
-                        surface: {
-                            50: '#f8fafc',
-                            200: '#e2e8f0',
-                        },
                         text: {
-                            main: '#1e0f35',     /* Texto oscuro con tinte morado */
-                            muted: '#5a4a75',    /* Texto secundario */
+                            main: '#1e0f35',
+                            muted: '#5a4a75',
                         }
                     },
                     boxShadow: {
                         'soft': '0 20px 40px -15px rgba(0,0,0,0.08)',
                         'float': '0 30px 60px -20px rgba(124, 58, 237, 0.25)',
-                        'overlap': '0 -20px 50px rgba(0,0,0,0.15)', /* Sombra para el efecto de scroll */
+                        'overlap': '0 -20px 50px rgba(0,0,0,0.15)',
+                    },
+                    animation: {
+                        'infinite-scroll': 'scroll 30s linear infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(calc(-250px * 5))' }, /* Ajustar según cantidad de items */
+                        }
                     }
                 }
             }
@@ -54,841 +64,607 @@
 
     <style>
         body {
-            background-color: #270e4e; /* Base oscura para el Hero */
+            background-color: #270e4e;
             color: #1e0f35;
             overflow-x: hidden;
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #270e4e;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #7c3aed;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a855f7;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #270e4e; }
+        ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
 
-        /* Video Mockup Ratio */
-        .video-mockup {
-            aspect-ratio: 9 / 16;
-            background-size: cover;
-            background-position: center;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Horizontal Scroll Hide */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        /* Utilitarios para animaciones Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-accent selection:text-white">
 
-    <!-- Navigation (Dynamic Glassmorphism) -->
+    <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 transition-all duration-500 bg-brand-dark/90 backdrop-blur-lg border-b border-white/10 py-4 text-white" id="navbar">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2.5">
-                <img id="nav-logo" src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto brightness-0 invert transition-all duration-500">
-                <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
+            <a href="#" class="flex items-center gap-2.5" aria-label="Inicio">
+                <img id="nav-logo" src="ne.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto brightness-0 invert transition-all duration-500">
+                <span class="text-base tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
             </a>
-            <a id="nav-cta" href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20ahora%20con%20Aloha%20Digital." target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-brand-100 hover:shadow-float transition-all duration-300">
-                Quiero empezar ahora
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <a href="#nichos" class="hover:text-brand-300 transition-colors">Especialidades</a>
+                <a href="#metodologia" class="hover:text-brand-300 transition-colors">ADN Aloha</a>
+                <a href="#servicios" class="hover:text-brand-300 transition-colors">Servicios</a>
+            </div>
+
+            <a id="nav-cta" href="https://wa.me/584128998666" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex bg-white text-brand-dark px-6 py-2.5 rounded-full font-bold hover:bg-brand-100 hover:shadow-float transition-all duration-300">
+                Hablemos de tu marca
             </a>
         </div>
     </nav>
 
-    <!-- Main Wrapper para el efecto de Stacking -->
     <main class="relative w-full">
+        <!-- Hero Section Institutional -->
+        <section class="sticky top-0 h-[100svh] min-h-[700px] w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-brand-dark text-white z-0">
+            <!-- Gradient Orbs -->
+            <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-brand-600 rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-500 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+            
+            <!-- Grid pattern overlay -->
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
 
-        <!-- Hero Section (Fijo al fondo) con auto-centrado ajustado -->
-        <section class="sticky top-0 h-[100svh] min-h-[600px] w-full flex flex-col justify-center items-center px-6 overflow-hidden bg-brand-dark text-white z-0">
-            <!-- Decoraciones de fondo abstractas -->
-            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-brand-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-pink-500 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
-
-            <!-- Contenedor central: mt-32 y md:mt-40 para separar del navbar -->
-            <div class="relative z-10 max-w-5xl mx-auto text-center mt-32 md:mt-40 mb-16 md:mb-28 flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-white/20 text-brand-100 font-semibold text-xs tracking-widest uppercase mb-5 md:mb-6">
-                    PROPUESTA ALOHA DIGITAL
+            <div class="relative z-10 max-w-5xl mx-auto text-center mt-20 flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-brand-100 font-semibold text-xs tracking-widest uppercase mb-8 reveal">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    Agencia Digital de Alto Rendimiento
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-5 md:mb-6">
-                    Un solo ecosistema, <br class="hidden md:block">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300">resultados excepcionales.</span>
+                
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] mb-6 reveal delay-100">
+                    El socio digital de las <br class="hidden md:block">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-300">marcas que lideran.</span>
                 </h1>
-                <p class="text-lg md:text-xl text-brand-100/80 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light">
-                    Aloha reemplaza las herramientas dispersas y los esfuerzos aislados con una única plataforma de alto nivel para posicionar tu marca en el mercado inmobiliario.
+                
+                <p class="text-lg md:text-xl lg:text-2xl text-brand-100/70 max-w-3xl mx-auto mb-10 leading-relaxed font-light reveal delay-200">
+                    Construimos ecosistemas digitales, diseñamos estrategias de conversión y producimos contenido de talla mundial para marcas con visión global.
                 </p>
                 
-                <!-- Contenedor del Botón y Flecha -->
-                <div class="flex flex-col items-center justify-center gap-4">
-                    <a href="#solucion" class="inline-flex items-center justify-center gap-2 bg-white text-brand-dark px-10 py-4 rounded-full font-bold hover:scale-105 hover:shadow-float transition-all duration-300 text-lg">
-                        Descubrir cómo
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal delay-300">
+                    <a href="#nichos" class="inline-flex items-center justify-center gap-2 bg-white text-brand-dark px-8 py-4 rounded-full font-bold hover:scale-105 hover:shadow-float transition-all duration-300 text-lg w-full sm:w-auto">
+                        Ver soluciones por industria
                     </a>
-                    
-                    <!-- Indicador de scroll -->
-                    <div class="animate-bounce opacity-50 mt-1">
-                        <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
-                    </div>
+                    <a href="https://wa.me/584128998666" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all duration-300 text-lg w-full sm:w-auto">
+                        <i data-lucide="play" class="w-5 h-5"></i> Agendar auditoría
+                    </a>
                 </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+                <i data-lucide="arrow-down" class="w-6 h-6 text-white"></i>
             </div>
         </section>
 
-        <!-- Contenedor que desliza por encima (Color rosado clarito) -->
-        <div id="solucion" class="relative z-20 bg-brand-light rounded-t-[3rem] shadow-overlap pb-20 pt-10">
-            
-            <!-- Decoración superior (pequeña píldora) -->
-            <div class="w-16 h-1.5 bg-brand-200 rounded-full mx-auto mb-10 md:mb-16 opacity-50"></div>
+        <!-- White Content Wrapper -->
+        <div class="relative z-20 bg-brand-light rounded-t-[3rem] shadow-overlap pb-20 pt-10">
+            <div class="w-16 h-1.5 bg-brand-200 rounded-full mx-auto mb-16 opacity-50"></div>
 
-            <!-- Message / Problem Section (High-End Editorial Layout) -->
-            <section class="py-16 md:py-24 px-6 relative overflow-hidden border-b border-brand-100/30">
-                <!-- Luces decorativas fondo -->
+            <!-- Franja de Logos de Autoridad -->
+            <div class="w-full overflow-hidden flex flex-col py-10 border-y border-brand-200/50 mb-24 bg-white/30 backdrop-blur-sm relative">
+                <p class="text-center text-xs font-bold uppercase tracking-widest text-text-muted/60 mb-8">Respaldando a marcas líderes a nivel global</p>
+                <!-- Degradados en los bordes para ocultar el salto de animación -->
+                <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-light to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-light to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="flex whitespace-nowrap overflow-hidden">
+                    <!-- Tailwind infinite marquee class -->
+                    <div class="animate-infinite-scroll flex gap-16 md:gap-24 items-center min-w-max px-8">
+                        <!-- Iteration 1 -->
+                        <img src="Logos/LOGO_FUNZIONE (1)_FT.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Funzione">
+                        <img src="Logos/Logo Bellas a color.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Bellas">
+                        <img src="Logos/Logo Boltus Rentals.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Boltus Rentals">
+                        <img src="Logos/Logo Pearls.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Pearls">
+                        <img src="Logos/LogoLizette Piñero.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Lizette Piñero">
+                        <img src="Logos/logo blanco cepo.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Cepo">
+                        <img src="Logos/logo.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Cliente">
+                        
+                        <!-- Iteration 2 (Duplicado para efecto infinito fluido) -->
+                        <img src="Logos/LOGO_FUNZIONE (1)_FT.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Funzione" aria-hidden="true">
+                        <img src="Logos/Logo Bellas a color.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Bellas" aria-hidden="true">
+                        <img src="Logos/Logo Boltus Rentals.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Boltus Rentals" aria-hidden="true">
+                        <img src="Logos/Logo Pearls.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Pearls" aria-hidden="true">
+                        <img src="Logos/LogoLizette Piñero.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Lizette Piñero" aria-hidden="true">
+                        <img src="Logos/logo blanco cepo.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Cepo" aria-hidden="true">
+                        <img src="Logos/logo.png" class="h-12 md:h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100" alt="Cliente" aria-hidden="true">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Nichos Especializados (Hub to Landing Pages) -->
+            <section id="nichos" class="px-6 mb-32 relative">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+                        <div class="max-w-2xl">
+                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6 bg-white/50 backdrop-blur-sm shadow-sm">
+                                Divisiones Especializadas
+                            </div>
+                            <h2 class="text-4xl md:text-6xl font-black tracking-tight text-text-main leading-tight">
+                                Entendemos tu negocio. <br>
+                                <span class="text-brand-600">Hablamos tu idioma.</span>
+                            </h2>
+                        </div>
+                        <p class="text-text-muted text-lg font-medium md:w-1/3 leading-relaxed">
+                            No creemos en fórmulas genéricas. Hemos desarrollado ecosistemas probados específicamente para industrias de alto valor.
+                        </p>
+                    </div>
+
+                    <!-- Cards de Nichos -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Nicho 1: Inmobiliario (Active Link) -->
+                        <a href="./inmobiliario.html" class="group relative bg-white rounded-[2.5rem] p-2 overflow-hidden shadow-soft hover:shadow-float transition-all duration-500 transform hover:-translate-y-2 reveal delay-100 block">
+                            <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800" alt="Sector Inmobiliario" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 border border-white/30">
+                                        <i data-lucide="building-2" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold tracking-tight">Real Estate</h3>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-8">
+                                <p class="text-text-muted font-medium mb-6">Ecosistemas de captación para asesores inmobiliarios, agencias y desarrolladoras.</p>
+                                <div class="flex items-center font-bold text-brand-600 group-hover:text-brand-accent transition-colors">
+                                    Ver ecosistema inmobiliario <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Nicho 2: Salud y Bienestar (Coming Soon / Example) -->
+                        <a href="#" class="group relative bg-white rounded-[2.5rem] p-2 overflow-hidden shadow-soft hover:shadow-float transition-all duration-500 transform hover:-translate-y-2 reveal delay-200 block">
+                            <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+                                <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&q=80&w=800" alt="Sector Salud" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 border border-white/30">
+                                        <i data-lucide="stethoscope" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold tracking-tight">Salud & Estética</h3>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-8">
+                                <p class="text-text-muted font-medium mb-6">Posicionamiento de autoridad para médicos especialistas, clínicas y odontólogos.</p>
+                                <div class="flex items-center font-bold text-brand-600 group-hover:text-brand-accent transition-colors">
+                                    Explorar soluciones <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- Nicho 3: Marcas Personales / Corporativo -->
+                        <a href="#" class="group relative bg-white rounded-[2.5rem] p-2 overflow-hidden shadow-soft hover:shadow-float transition-all duration-500 transform hover:-translate-y-2 reveal delay-300 block">
+                            <div class="relative h-64 rounded-[2rem] overflow-hidden mb-6">
+                                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=800" alt="Marcas Personales" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 border border-white/30">
+                                        <i data-lucide="briefcase" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold tracking-tight">Marcas Personales</h3>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-8">
+                                <p class="text-text-muted font-medium mb-6">Mentores, coaches y profesionales B2B que buscan escalar su autoridad e infoproductos.</p>
+                                <div class="flex items-center font-bold text-brand-600 group-hover:text-brand-accent transition-colors">
+                                    Elevar mi marca <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Metodología / The Silicon Valley "Bento Grid" -->
+            <section id="servicios" class="py-24 px-6 relative border-t border-brand-200/50 bg-white">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20 reveal">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6 shadow-sm bg-brand-50">
+                            Lo que hacemos
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-text-main">Infraestructura Digital<br>de Grado Empresa.</h2>
+                        <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">No somos una agencia tradicional de "postear foticos". Construimos activos digitales que generan impacto real en el negocio.</p>
+                    </div>
+
+                    <!-- Bento Grid Layout -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[300px]">
+                        
+                        <!-- Caja 1: Video Marketing (Ocupa 2 columnas y 2 filas en Desktop) -->
+                        <div class="md:col-span-2 md:row-span-2 bg-brand-dark rounded-[2.5rem] p-10 relative overflow-hidden group reveal">
+                            <img src="https://images.unsplash.com/photo-1616469829941-c7200edec809?auto=format&fit=crop&q=80&w=800" alt="Video Production" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-br from-brand-900/90 to-transparent"></div>
+                            <div class="relative z-10 flex flex-col h-full justify-between">
+                                <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
+                                    <i data-lucide="video" class="w-8 h-8 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Video Marketing & Formato Corto</h3>
+                                    <p class="text-brand-100/80 text-lg font-medium max-w-md">Producción, edición dinámica y estrategia para dominar TikTok e Instagram Reels. Retenemos la atención en los primeros 3 segundos vitales.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Caja 2: Web Dev -->
+                        <div class="md:col-span-2 bg-gradient-to-br from-brand-50 to-brand-100 rounded-[2.5rem] p-10 relative overflow-hidden group border border-brand-200/50 reveal delay-100">
+                            <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-white rounded-full blur-[60px] opacity-60"></div>
+                            <div class="relative z-10 flex flex-col h-full justify-center">
+                                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center border border-brand-100 shadow-sm mb-6">
+                                    <i data-lucide="layout-template" class="w-6 h-6 text-brand-600"></i>
+                                </div>
+                                <h3 class="text-2xl font-extrabold text-text-main mb-3">Desarrollo Web Élite</h3>
+                                <p class="text-text-muted font-medium">Landing pages ultrarrápidas y sitios web corporativos diseñados para la conversión y la credibilidad absoluta.</p>
+                            </div>
+                        </div>
+
+                        <!-- Caja 3: Performance Ads -->
+                        <div class="md:col-span-1 bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-soft flex flex-col justify-between group hover:border-green-200 transition-colors reveal delay-200">
+                            <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-500 mb-4">
+                                <i data-lucide="trending-up" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-extrabold text-text-main mb-2">Performance Ads</h3>
+                                <p class="text-sm text-text-muted font-medium">Campañas en Meta y Google Ads orientadas a CPA (Costo por Adquisición) y ROI.</p>
+                            </div>
+                        </div>
+
+                        <!-- Caja 4: Branding -->
+                        <div class="md:col-span-1 bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-soft flex flex-col justify-between group hover:border-pink-200 transition-colors reveal delay-300">
+                            <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-500 mb-4">
+                                <i data-lucide="palette" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-extrabold text-text-main mb-2">Identidad Visual</h3>
+                                <p class="text-sm text-text-muted font-medium">Dirección de arte, manual de marca y feeds de Instagram con calidad de revista.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: La Historia de Aloha (Storytelling) -->
+            <section class="py-24 px-6 bg-brand-light relative overflow-hidden">
+                <!-- Luces decorativas -->
                 <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
                 <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
                 <div class="max-w-7xl mx-auto relative z-10">
-                    
-                    <!-- Magazine Header -->
-                    <div class="mb-20 flex flex-col items-center text-center">
-                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-8 shadow-sm bg-white/50 backdrop-blur-sm">
-                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                            La Experiencia Digital
+                    <div class="text-center mb-16 md:mb-24 reveal">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6 shadow-sm bg-brand-50">
+                            Nuestra Historia
                         </div>
-                        <h2 class="text-6xl md:text-8xl font-black tracking-tight text-text-main leading-[1.1]">
-                            La imagen <br class="hidden md:block">
-                            <span class="text-brand-600 font-extrabold">lo es todo.</span>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-text-main">
+                            10 años.<br>De un DM random a ecosistemas globales.
                         </h2>
                     </div>
 
-                    <!-- Editorial Asymmetric Grid -->
-                    <div class="relative w-full max-w-6xl mx-auto mt-12 md:mt-24">
-                        
-                        <!-- Bloque de Texto Principal (Fondo Glassmorphism) -->
-                        <div class="md:w-3/4 md:ml-auto bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] rounded-[2.5rem] p-8 md:p-16 lg:p-20 relative z-0 md:pl-40 lg:pl-56 mt-32 md:mt-0 md:min-h-[500px]">
-                            
-                            <!-- Párrafo introductorio gigante -->
-                            <p class="text-2xl md:text-4xl text-text-main leading-tight mb-10 relative font-medium">
-                                <span class="absolute -top-10 -left-6 text-brand-200 text-8xl opacity-50">"</span>
-                                Sabemos perfectamente <span class="text-brand-600 font-extrabold">lo que funciona.</span> Hemos trabajado con cuentas del sector inmobiliario y sabemos que no basta con ser <span class="text-text-muted">"un agente más"</span> subiendo fotos de casas. Tienes que posicionarte como una autoridad en tu nicho.
-                            </p>
-                            
-                            <!-- Cuerpo del texto dividido -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-text-muted text-base lg:text-lg leading-relaxed font-medium">
-                                <div>
-                                    <p class="mb-6">
-                                        Hoy en día, tus compradores ideales están en <strong class="text-text-main">Instagram y TikTok</strong>. Buscan conectar con la persona detrás de la propiedad antes de tomar una decisión de inversión. Nosotros construimos ese puente visual y estratégico.
-                                    </p>
-                                    <p>
-                                        A diferencia de las agencias tradicionales, no nos limitamos a "publicar por publicar". Diseñamos una estética que refleja la exclusividad real de tu inventario inmobiliario.
-                                    </p>
-                                </div>
-                                <div class="md:pb-16 lg:pb-0"> <!-- Añadido padding para asegurar espacio si el texto es corto -->
-                                    <p class="mb-6">
-                                        Tu marca personal se convierte en la herramienta de ventas más poderosa. Tú aportas el conocimiento y el carisma; nosotros la dirección de arte, los guiones y la postproducción.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Columna Izquierda Flotante: Retrato & Perfil (Rompiendo la grilla) -->
-                        <div class="relative md:absolute top-auto md:top-[-80px] left-0 w-full md:w-[380px] lg:w-[420px] z-20 flex flex-col gap-6 mt-16 md:mt-0 px-6 md:px-0">
-                            
-                            <div class="relative w-full mx-auto">
-                                <!-- Deco Shadow -->
-                                <div class="absolute -inset-4 bg-gradient-to-br from-brand-300/40 to-pink-300/40 rounded-[2.5rem] transform rotate-3 blur-lg -z-10"></div>
-                                
-                                <!-- Carrusel Interactivo -->
-                                <div class="relative z-10 rounded-[2rem] shadow-2xl w-full aspect-[4/5] overflow-hidden group cursor-pointer border-[6px] border-white/80" onclick="toggleCarousel(true)" role="button" aria-label="Cambiar foto de perfil" tabindex="0" onkeydown="if(event.key==='Enter') toggleCarousel(true)">
-                                    <img id="carousel-img-1" src="https://i.imgur.com/WtHgKui.jpeg" alt="Andrea Guevara Aloha Digital 1" width="400" height="500" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 opacity-100 group-hover:scale-105">
-                                    <img id="carousel-img-2" src="https://i.imgur.com/SubUAwm.jpeg" alt="Andrea Guevara Aloha Digital 2" width="400" height="500" loading="lazy" class="absolute inset-0 w-full h-full object-cover object-top transition-all duration-1000 opacity-0 group-hover:scale-105">
+                    <div class="flex flex-col md:flex-row gap-16 md:gap-24 relative">
+                        <!-- Columna Izquierda: Sticky Image -->
+                        <div class="md:w-5/12">
+                            <div class="sticky top-[15vh]">
+                                <div class="grid grid-cols-2 gap-4 relative z-10 items-center">
+                                    <!-- Andrea -->
+                                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/5] transform md:translate-y-4 transition-transform hover:scale-105 duration-500">
+                                        <img src="https://i.imgur.com/lbQIPqq.jpeg" alt="Andrea Guevara - Co-Founder Aloha Digital" class="w-full h-full object-cover">
+                                        <div class="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-brand-dark/95 via-brand-dark/40 to-transparent"></div>
+                                        <div class="absolute bottom-4 left-3 md:left-4 text-white">
+                                            <p class="font-black text-lg md:text-xl mb-0.5 drop-shadow-md leading-none">Andrea<br>Guevara</p>
+                                            <p class="text-brand-300 font-bold tracking-widest uppercase text-[9px] mt-1">Co-Founder / CEO</p>
+                                        </div>
+                                    </div>
                                     
-                                    <!-- Gradiente suave abajo -->
-                                    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-dark/60 to-transparent pointer-events-none"></div>
+                                    <!-- Napoleón Perfil -->
+                                    <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/80 aspect-[4/5] transform md:-translate-y-4 transition-transform hover:scale-105 duration-500">
+                                        <img src="https://i.imgur.com/E8acfM4.jpeg" alt="Napoleón Baca - Co-Founder Aloha Digital" class="w-full h-full object-cover">
+                                        <div class="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-brand-dark/95 via-brand-dark/40 to-transparent"></div>
+                                        <div class="absolute bottom-4 left-3 md:left-4 text-white">
+                                            <p class="font-black text-lg md:text-xl mb-0.5 drop-shadow-md leading-none">Napoleón<br>Baca</p>
+                                            <p class="text-brand-300 font-bold tracking-widest uppercase text-[9px] mt-1">Co-Founder / Strategy</p>
+                                        </div>
+                                    </div>
 
-                                    <!-- Controles minimalistas -->
-                                    <div class="absolute bottom-6 inset-x-0 flex justify-center gap-2 z-20" aria-hidden="true">
-                                        <div id="dot-1" class="w-8 h-1 rounded-full bg-white transition-all duration-500 shadow-sm"></div>
-                                        <div id="dot-2" class="w-2 h-1 rounded-full bg-white/40 transition-all duration-500 shadow-sm"></div>
+                                    <!-- Insignia 10 años -->
+                                    <div class="absolute -top-6 -right-6 md:-right-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full font-black text-brand-600 shadow-xl text-sm border border-white/50 z-20">
+                                        +10 Años
+                                    </div>
+                                </div>
+
+                                <!-- Mensaje de Filosofía Flotante -->
+                                <div class="mt-8 p-8 bg-white/60 backdrop-blur-md rounded-3xl border border-white/80 shadow-xl text-center transform transition-transform hover:scale-105 duration-500 reveal relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-brand-100/30 to-pink-100/30"></div>
+                                    <div class="relative z-10">
+                                        <i data-lucide="quote" class="w-8 h-8 text-brand-300 mx-auto mb-3"></i>
+                                        <p class="text-text-main font-bold italic text-lg leading-snug">"No buscamos tener cientos de clientes. Buscamos escalar a los mejores de cada sector."</p>
+                                        <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full opacity-50"></div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Firma Flotante (Glassmorphism) -->
-                            <div class="absolute -bottom-6 -right-6 md:-right-12 bg-white/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/50 w-[240px] transform rotate-2 z-30">
-                                <p class="font-extrabold text-text-main text-2xl tracking-tight mb-1">Andrea Guevara</p>
-                                <p class="text-[10px] text-brand-600 font-extrabold tracking-widest uppercase">Directora de Aloha Digital</p>
+                        <!-- Columna Derecha: Scrolling Story -->
+                        <div class="md:w-7/12 py-10 flex flex-col gap-16">
+                            
+                            <div class="reveal">
+                                <div class="text-brand-400 font-black text-6xl mb-4 opacity-50">01</div>
+                                <h3 class="text-3xl font-extrabold text-text-main mb-4 leading-tight">Hace 10 años estaba atrapada en un trabajo tóxico.</h3>
+                                <p class="text-text-muted text-lg font-medium leading-relaxed">
+                                    Trabajaba remoto para una agencia en Panamá. El ambiente era mega tóxico, estaba aburrida y sabía en el fondo que quería hacer algo más grande. Un día scrolleando, vi a una chica que hacía pestañas en Instagram y decidí escribirle a ver qué pasaba.
+                                </p>
+                            </div>
+
+                            <div class="reveal">
+                                <div class="text-brand-400 font-black text-6xl mb-4 opacity-50">02</div>
+                                <h3 class="text-3xl font-extrabold text-text-main mb-4 leading-tight">Un mensaje que lo cambió todo.</h3>
+                                <p class="text-text-muted text-lg font-medium leading-relaxed">
+                                    Le escribí: <span class="italic font-bold">"Hola Alondra, vi lo que hacías y quería comentarte que podemos llevar tus redes al siguiente nivel con los planes de marketing que tenemos en Aloha Digital"</span>. <br><br>Dato curioso: en ese momento, Aloha Digital solo era una idea en mi cabeza.
+                                </p>
+                            </div>
+
+                            <div class="reveal">
+                                <div class="text-brand-400 font-black text-6xl mb-4 opacity-50">03</div>
+                                <h3 class="text-3xl font-extrabold text-text-main mb-4 leading-tight">El terror y la oportunidad.</h3>
+                                <p class="text-text-muted text-lg font-medium leading-relaxed">
+                                    Envié el mensaje y esperé. Pensé: "Bueno, esto no funciona". Hasta que la pantalla se encendió: <span class="italic font-bold">"Me interesa mucho, cuéntame más"</span>. <br><br>Mi mente gritó auxilio, nunca había llegado tan lejos 🤯. Pero el miedo no me frenó. Le di mi número y le conté todo lo que podíamos hacer.
+                                </p>
+                            </div>
+
+                            <div class="reveal">
+                                <div class="text-brand-400 font-black text-6xl mb-4 opacity-50">04</div>
+                                <h3 class="text-3xl font-extrabold text-text-main mb-4 leading-tight">De una esteticista a ecosistemas en USA.</h3>
+                                <p class="text-text-muted text-lg font-medium leading-relaxed">
+                                    Ese simple mensaje abrió una puerta gigante. Pasamos de esa primera esteticista a manejar centros médicos en Puerto Rico, luego en Estados Unidos. En estos 10 años nos expandimos a restaurantes, turismo médico y bienes raíces de alto nivel.
+                                </p>
+                            </div>
+
+                            <div class="bg-brand-dark text-white p-10 rounded-[2rem] shadow-float reveal mt-8 relative overflow-hidden">
+                                <div class="absolute right-0 top-0 w-32 h-32 bg-brand-500 rounded-full blur-[60px] opacity-40"></div>
+                                <h3 class="text-2xl font-black mb-4 relative z-10">Hoy somos mucho más que redes.</h3>
+                                <p class="text-brand-100/90 text-lg font-medium leading-relaxed relative z-10 mb-6">
+                                    Junto a mi esposo y co-founder, desarrollamos landing pages veloces, E-commerce, Apps, pauta en Meta y embudos creativos para que los negocios vendan en piloto automático.
+                                </p>
+                                <div class="border-t border-white/20 pt-6 mt-6 relative z-10">
+                                    <p class="font-extrabold text-xl text-brand-300">"El canal cambió, pero la meta es la misma: Hacer crecer tu negocio."</p>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Pull-Quote Flotante Abajo a la izquierda (llenando el hueco) -->
-                        <div class="relative md:absolute bottom-auto md:bottom-8 right-auto md:left-6 lg:left-12 bg-brand-dark p-8 rounded-3xl shadow-float border border-white/10 w-full md:w-[360px] lg:w-[380px] z-30 transform md:-rotate-1 mt-12 md:mt-0 mx-auto md:mx-0 max-w-sm md:max-w-none">
-                            <i data-lucide="quote" class="absolute top-6 left-6 w-10 h-10 text-white/10"></i>
-                            <p class="text-white text-lg relative z-10 leading-relaxed text-center mt-2 font-medium">
-                                "El objetivo es que cuando un cliente piense en bienes raíces en tu zona, tu rostro sea lo primero que venga a su mente."
-                            </p>
-                        </div>
-
                     </div>
                 </div>
             </section>
 
-            <!-- Sección: Cómo Funciona (Híbrida: Tarjetas en Móvil / Sticky en Desktop) -->
-            <section id="como-funciona" class="py-24 px-6 bg-brand-light relative z-10">
-                <div class="max-w-7xl mx-auto">
-                    
-                    <div class="text-center mb-16 md:mb-24">
-                        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-text-main">Cómo funciona</h2>
-                        <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">Procesos simples. Cero estrés. Resultados visibles.</p>
+            <!-- Formulario Gamificado (Quiz Funnel) -->
+            <section id="auditoria" class="py-32 px-6 bg-brand-dark relative overflow-hidden">
+                <!-- Efectos de fondo -->
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-pink-500 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+
+                <div class="max-w-4xl mx-auto relative z-10">
+                    <div class="text-center mb-12 reveal">
+                        <h2 class="text-4xl md:text-5xl font-black mb-6 text-white tracking-tight leading-tight">Diagnóstico de Autoridad</h2>
+                        <p class="text-xl text-brand-100/80 font-medium">Completa este cuestionario de 1 minuto y descubre el potencial de crecimiento de tu marca.</p>
                     </div>
 
-                    <!-- ============================================== -->
-                    <!-- VERSIÓN MÓVIL: Tarjetas Apiladas (Oculto en md:) -->
-                    <!-- ============================================== -->
-                    <div class="flex flex-col gap-8 md:hidden">
+                    <!-- Contenedor del Quiz -->
+                    <div class="bg-white rounded-[2.5rem] shadow-float p-8 md:p-12 reveal delay-100 relative min-h-[400px]" id="quiz-container">
                         
-                        <!-- Tarjeta Paso 1 -->
-                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
-                            <!-- Visual Móvil 1 -->
-                            <div class="h-48 bg-brand-dark relative flex items-center justify-center overflow-hidden">
-                                <img src="./onboarding-estrategico.webp" alt="Estrategia y Onboarding" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 text-center">
-                                    <i data-lucide="target" class="w-8 h-8 text-brand-400 mx-auto mb-2"></i>
-                                    <div class="w-12 h-1 bg-brand-accent rounded-full mx-auto mb-2"></div>
-                                    <p class="text-brand-100 text-xs font-bold uppercase tracking-wider drop-shadow-md">Estrategia</p>
-                                </div>
-                            </div>
-                            <!-- Contenido Móvil 1 -->
-                            <div class="p-8">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-10 h-10 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">1</div>
-                                    <h3 class="text-2xl font-extrabold text-text-main">Onboarding Estratégico</h3>
-                                </div>
-                                <p class="text-text-muted leading-relaxed font-medium">Taller inicial donde definimos tu cliente ideal, el tono de tu marca personal y los tipos de propiedades/zonas que deseas destacar.</p>
+                        <!-- Barra de Progreso -->
+                        <div class="w-full h-2 bg-brand-100 rounded-full mb-10 overflow-hidden relative z-20">
+                            <div class="h-full bg-brand-500 w-1/4 transition-all duration-500" id="quiz-progress"></div>
+                        </div>
+
+                        <!-- Pregunta 1 -->
+                        <div class="quiz-step active transition-all duration-500 opacity-100 relative z-10" id="step-1">
+                            <h3 class="text-2xl font-extrabold text-text-main mb-6 text-center">1. ¿Cuál es el principal desafío de tu marca actualmente?</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <button onclick="nextQuizStep(2)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <i data-lucide="users" class="w-8 h-8 text-brand-400 mx-auto mb-4 group-hover:text-brand-600 transition-colors"></i>
+                                    <span class="font-bold text-text-main block">Atraer clientes de alto valor</span>
+                                </button>
+                                <button onclick="nextQuizStep(2)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <i data-lucide="award" class="w-8 h-8 text-brand-400 mx-auto mb-4 group-hover:text-brand-600 transition-colors"></i>
+                                    <span class="font-bold text-text-main block">Construir autoridad en mi nicho</span>
+                                </button>
+                                <button onclick="nextQuizStep(2)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <i data-lucide="trending-up" class="w-8 h-8 text-brand-400 mx-auto mb-4 group-hover:text-brand-600 transition-colors"></i>
+                                    <span class="font-bold text-text-main block">Escalar mis ventas digitales</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta Paso 2 -->
-                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
-                            <!-- Visual Móvil 2 -->
-                            <div class="h-48 bg-brand-dark relative flex items-center justify-center overflow-hidden">
-                                <img src="./blog---featured-image_c8287034-960e-4975-9ce9-9d38cf8b8e31-2080127.webp" alt="Grabación con celular" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 text-center">
-                                    <i data-lucide="smartphone" class="w-8 h-8 text-white mx-auto mb-2"></i>
-                                    <div class="flex gap-2 justify-center mt-2">
-                                        <div class="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></div>
-                                        <span class="text-white text-[10px] font-bold tracking-widest uppercase drop-shadow-md">REC en crudo</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Contenido Móvil 2 -->
-                            <div class="p-8">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-10 h-10 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center font-black text-lg shrink-0">2</div>
-                                    <h3 class="text-2xl font-extrabold text-text-main">Material en Crudo</h3>
-                                </div>
-                                <p class="text-text-muted leading-relaxed font-medium">Tú te grabas desde tu celular compartiendo tu conocimiento. Nos envías los videos crudos y nosotros los editamos con el máximo nivel de producción para conquistar Instagram y TikTok.</p>
+                        <!-- Pregunta 2 -->
+                        <div class="quiz-step hidden transition-all duration-500 opacity-0 absolute top-0 left-0 w-full p-8 md:p-12 z-0" id="step-2">
+                            <h3 class="text-2xl font-extrabold text-text-main mb-6 text-center mt-8">2. ¿En qué punto se encuentra tu negocio?</h3>
+                            <div class="grid grid-cols-1 gap-4 max-w-2xl mx-auto">
+                                <button onclick="nextQuizStep(3)" class="p-5 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-left flex items-center justify-between transition-all duration-300 group">
+                                    <span class="font-bold text-text-main">A. Lanzamiento / Recién empezando</span>
+                                    <i data-lucide="chevron-right" class="w-5 h-5 text-brand-300 group-hover:text-brand-600"></i>
+                                </button>
+                                <button onclick="nextQuizStep(3)" class="p-5 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-left flex items-center justify-between transition-all duration-300 group">
+                                    <span class="font-bold text-text-main">B. Consolidado pero con crecimiento estancado</span>
+                                    <i data-lucide="chevron-right" class="w-5 h-5 text-brand-300 group-hover:text-brand-600"></i>
+                                </button>
+                                <button onclick="nextQuizStep(3)" class="p-5 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-left flex items-center justify-between transition-all duration-300 group">
+                                    <span class="font-bold text-text-main">C. Liderando y buscando escalar masivamente</span>
+                                    <i data-lucide="chevron-right" class="w-5 h-5 text-brand-300 group-hover:text-brand-600"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Tarjeta Paso 3 -->
-                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
-                            <!-- Visual Móvil 3 -->
-                            <div class="h-48 bg-brand-dark relative flex items-center justify-center overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400" width="400" height="400" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
-                                <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-10 border border-white/30">
-                                    <i data-lucide="scissors" class="w-8 h-8 text-white"></i>
-                                </div>
-                            </div>
-                            <!-- Contenido Móvil 3 -->
-                            <div class="p-8">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">3</div>
-                                    <h3 class="text-2xl font-extrabold text-text-main">Edición y Ejecución</h3>
-                                </div>
-                                <p class="text-text-muted leading-relaxed font-medium">Hacemos la postproducción, diseñamos tu feed, publicamos y optimizamos los copys. Tú solo te ocupas de mostrar propiedades y cerrar ventas.</p>
-                                <div class="mt-4 inline-block bg-brand-50 px-3 py-1 rounded-full text-brand-600 text-sm font-bold">Nada se publica sin tu OK.</div>
-                            </div>
-                        </div>
-
-                        <!-- Tarjeta Paso 4 -->
-                        <div class="bg-white rounded-[2rem] shadow-soft overflow-hidden border border-brand-100">
-                            <!-- Visual Móvil 4 -->
-                            <div class="h-48 bg-brand-dark relative flex items-center justify-center overflow-hidden">
-                                <img src="./619231276_17960982495033001_8040173207741248924_n.jpg" alt="Reporte de Métricas" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                <div class="relative z-10 w-full max-w-[200px] bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-5 text-center">
-                                    <div class="w-full space-y-2">
-                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                            <div class="h-full bg-green-400 w-3/4"></div>
-                                        </div>
-                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                            <div class="h-full bg-green-400 w-5/6"></div>
-                                        </div>
-                                        <div class="h-1.5 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                            <div class="h-full bg-green-400 w-1/2"></div>
-                                        </div>
-                                    </div>
-                                    <i data-lucide="trending-up" class="w-6 h-6 text-green-400 mx-auto mt-3"></i>
-                                </div>
-                            </div>
-                            <!-- Contenido Móvil 4 -->
-                            <div class="p-8">
-                                <div class="flex items-center gap-4 mb-4">
-                                    <div class="w-10 h-10 bg-green-50 text-green-600 rounded-full flex items-center justify-center font-black text-lg shrink-0">4</div>
-                                    <h3 class="text-2xl font-extrabold text-text-main">Reporte Mensual</h3>
-                                </div>
-                                <p class="text-text-muted leading-relaxed font-medium">Revisamos métricas reales: visualizaciones en TikTok, engagement y alcance en IG. Ajustamos la estrategia para el mes siguiente con datos concretos.</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- ============================================== -->
-                    <!-- VERSIÓN DESKTOP: Sticky Scroll (Oculto en <md) -->
-                    <!-- ============================================== -->
-                    <div class="hidden md:flex gap-12 lg:gap-20 items-start">
-                        
-                        <!-- Columna Izquierda: Sticky Media (Sticky) -->
-                        <div class="w-1/2 sticky top-32 h-[600px] bg-brand-dark rounded-[2.5rem] shadow-float overflow-hidden relative flex items-center justify-center p-8">
-                            
-                            <!-- Fondos decorativos -->
-                            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-brand-600 rounded-full blur-[100px] opacity-30"></div>
-
-                            <!-- Contenedores de estado -->
-                            <div id="media-step-1" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-100">
-                                <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col items-center justify-center text-center relative transform hover:scale-105 transition-transform">
-                                    <img src="./onboarding-estrategico.webp" alt="Onboarding Estratégico" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                    <div class="relative z-10 flex flex-col items-center p-6 w-full">
-                                        <div class="w-20 h-20 bg-brand-100/90 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-lg border border-white/50">
-                                            <i data-lucide="target" class="w-10 h-10 text-brand-600"></i>
-                                        </div>
-                                        <h4 class="text-white font-extrabold text-2xl mb-4 drop-shadow-md">Estrategia</h4>
-                                        <div class="bg-black/40 px-5 py-2.5 rounded-xl backdrop-blur-sm border border-white/10">
-                                            <div class="w-16 h-1 bg-brand-accent rounded-full mb-1.5 mx-auto"></div>
-                                            <p class="text-brand-100/90 text-[10px] uppercase tracking-widest font-bold">Plan de Acción</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="media-step-2" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
-                                <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col items-center justify-center text-center relative">
-                                    <img src="./blog---featured-image_c8287034-960e-4975-9ce9-9d38cf8b8e31-2080127.webp" alt="Material en crudo" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                    <div class="relative z-10 flex flex-col items-center p-6">
-                                        <div class="w-20 h-20 bg-pink-100/90 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-lg border border-white/50">
-                                            <i data-lucide="smartphone" class="w-10 h-10 text-pink-600"></i>
-                                        </div>
-                                        <h4 class="text-white font-extrabold text-2xl mb-3 drop-shadow-md">Tus videos</h4>
-                                        <div class="flex gap-2 justify-center bg-black/40 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
-                                            <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mt-0.5"></div>
-                                            <span class="text-white text-xs font-bold tracking-widest uppercase drop-shadow-sm">REC en crudo</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="media-step-3" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
-                                <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex items-center justify-center relative">
-                                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400" width="400" height="400" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                    <div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center relative z-10 border border-white/30">
-                                        <i data-lucide="scissors" class="w-10 h-10 text-white"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="media-step-4" class="desktop-media absolute inset-0 flex items-center justify-center p-8 transition-opacity duration-700 opacity-0 pointer-events-none">
-                                <div class="w-full h-full max-w-sm bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden flex flex-col items-center justify-center text-center relative">
-                                    <img src="./619231276_17960982495033001_8040173207741248924_n.jpg" alt="Análisis de Datos" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
-                                    <div class="relative z-10 flex flex-col items-center p-6 w-full">
-                                        <div class="w-20 h-20 bg-green-100/90 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 shadow-lg border border-white/50">
-                                            <i data-lucide="bar-chart-3" class="w-10 h-10 text-green-600"></i>
-                                        </div>
-                                        <h4 class="text-white font-extrabold text-2xl mb-4 drop-shadow-md">Métricas en Crecimiento</h4>
-                                        <div class="w-full max-w-[200px] space-y-3 bg-black/40 p-5 rounded-2xl backdrop-blur-sm border border-white/10">
-                                            <div class="h-2 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                                <div class="h-full bg-green-400 w-3/4"></div>
-                                            </div>
-                                            <div class="h-2 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                                <div class="h-full bg-green-400 w-5/6"></div>
-                                            </div>
-                                            <div class="h-2 bg-brand-100/20 rounded-full w-full overflow-hidden">
-                                                <div class="h-full bg-green-400 w-1/2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Pregunta 3 -->
+                        <div class="quiz-step hidden transition-all duration-500 opacity-0 absolute top-0 left-0 w-full p-8 md:p-12 z-0" id="step-3">
+                            <h3 class="text-2xl font-extrabold text-text-main mb-2 text-center mt-8">3. Capacidad de Inversión</h3>
+                            <p class="text-text-muted text-center mb-6 font-medium">¿Qué presupuesto mensual estás dispuesto a destinar a marketing y desarrollo?</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <button onclick="nextQuizStep(4)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <span class="font-extrabold text-xl text-brand-600 block mb-2">&lt; $1,000</span>
+                                    <span class="font-semibold text-text-muted text-sm block">USD / Mensual</span>
+                                </button>
+                                <button onclick="nextQuizStep(4)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <span class="font-extrabold text-xl text-brand-600 block mb-2">$1k - $3k</span>
+                                    <span class="font-semibold text-text-muted text-sm block">USD / Mensual</span>
+                                </button>
+                                <button onclick="nextQuizStep(4)" class="p-6 rounded-2xl border-2 border-brand-100 hover:border-brand-500 hover:bg-brand-50 text-center transition-all duration-300 group">
+                                    <span class="font-extrabold text-xl text-brand-600 block mb-2">&gt; $3,000</span>
+                                    <span class="font-semibold text-text-muted text-sm block">USD / Mensual</span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Columna Derecha: Pasos de Texto -->
-                        <div class="w-1/2 py-[10vh]">
-                            <div class="flex flex-col gap-32 relative">
-                                <!-- Línea conectora -->
-                                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-brand-200"></div>
-
-                                <!-- Paso 1 -->
-                                <div class="desktop-step-item relative flex gap-8 opacity-100 transition-opacity duration-500" data-step="1">
-                                    <div class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10 shadow-md">1</div>
-                                    <div>
-                                        <h3 class="text-3xl font-extrabold mb-4 text-text-main">Onboarding Estratégico</h3>
-                                        <p class="text-text-muted text-lg leading-relaxed font-medium">Taller inicial donde definimos tu cliente ideal, el tono de tu marca personal y los tipos de propiedades/zonas que deseas destacar.</p>
-                                    </div>
+                        <!-- Paso 4: Lead Capture -->
+                        <div class="quiz-step hidden transition-all duration-500 opacity-0 absolute top-0 left-0 w-full p-8 md:p-12 z-0" id="step-4">
+                            <div class="text-center mb-8 mt-4">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="check-circle-2" class="w-8 h-8 text-green-600"></i>
                                 </div>
-
-                                <!-- Paso 2 -->
-                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="2">
-                                    <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">2</div>
-                                    <div>
-                                        <h3 class="text-3xl font-extrabold mb-4 text-text-main">Material en Crudo</h3>
-                                        <p class="text-text-muted text-lg leading-relaxed font-medium">Tú te grabas desde tu celular mostrando las propiedades y compartiendo tu conocimiento. Nos envías los videos crudos y nosotros los editamos con el máximo nivel de producción visual y dinamismo para conquistar Instagram y TikTok.</p>
-                                    </div>
+                                <h3 class="text-2xl font-extrabold text-text-main mb-2">¡Análisis Completo!</h3>
+                                <p class="text-text-muted font-medium max-w-md mx-auto">Tu marca tiene un enorme potencial para dominar el mercado. Déjanos tus datos para enviarte el diagnóstico y agendar la llamada de estrategia.</p>
+                            </div>
+                            <form action="#" method="POST" class="max-w-md mx-auto space-y-4">
+                                <div>
+                                    <input type="text" placeholder="Tu Nombre o Empresa" required class="w-full px-5 py-3 rounded-xl border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-surface-50 font-medium text-text-main">
                                 </div>
-
-                                <!-- Paso 3 -->
-                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="3">
-                                    <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">3</div>
-                                    <div>
-                                        <h3 class="text-3xl font-extrabold mb-4 text-text-main">Edición y Ejecución</h3>
-                                        <p class="text-text-muted text-lg leading-relaxed font-medium">Hacemos la postproducción, diseñamos tu feed, publicamos y optimizamos los copys. Tú solo te ocupas de mostrar propiedades y cerrar ventas.<br><br><span class="font-bold text-brand-600">Nada se publica sin tu OK.</span></p>
-                                    </div>
+                                <div>
+                                    <input type="email" placeholder="Correo Electrónico" required class="w-full px-5 py-3 rounded-xl border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-surface-50 font-medium text-text-main">
                                 </div>
-
-                                <!-- Paso 4 -->
-                                <div class="desktop-step-item relative flex gap-8 opacity-40 transition-opacity duration-500" data-step="4">
-                                    <div class="w-12 h-12 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center font-black text-xl shrink-0 relative z-10">4</div>
-                                    <div>
-                                        <h3 class="text-3xl font-extrabold mb-4 text-text-main">Reporte Mensual</h3>
-                                        <p class="text-text-muted text-lg leading-relaxed font-medium">Revisamos métricas reales: visualizaciones en TikTok, engagement y alcance en IG. Ajustamos la estrategia para el mes siguiente con datos concretos.</p>
-                                    </div>
+                                <div>
+                                    <input type="tel" placeholder="WhatsApp (con código de país)" required class="w-full px-5 py-3 rounded-xl border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-surface-50 font-medium text-text-main">
                                 </div>
-
-                            </div>
+                                <button type="button" onclick="window.open('https://wa.me/584128998666', '_blank')" class="w-full bg-brand-600 text-white font-extrabold py-4 rounded-xl hover:bg-brand-500 transition-colors shadow-lg flex items-center justify-center gap-2 mt-4">
+                                    Desbloquear Diagnóstico Gratis <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </button>
+                            </form>
                         </div>
 
-                    </div>
-                </div>
-            </section>
-
-            <!-- Services Section (Ecosistema Digital - Stacking over previous) -->
-            <section id="servicios" class="py-32 px-6 relative z-20 bg-gradient-to-b from-purple-50/80 to-brand-100 shadow-[0_-20px_50px_rgba(0,0,0,0.03)] rounded-t-[3rem] md:rounded-t-[4rem]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-20">
-                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-200/60 text-brand-600 font-bold text-xs tracking-widest uppercase mb-6 shadow-sm bg-white/50 backdrop-blur-sm">
-                            Nuestro Enfoque
-                        </div>
-                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight text-text-main">Ecosistema Digital</h2>
-                        <p class="text-text-muted text-lg max-w-2xl mx-auto font-medium">Todo lo que necesitas para destacar en el sector inmobiliario, centralizado en un solo equipo de expertos.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Service 1 -->
-                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
-                            <!-- Brillo decorativo superior -->
-                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            
-                            <div class="w-16 h-16 bg-gradient-to-br from-brand-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-brand-50">
-                                <i data-lucide="video" class="w-7 h-7 text-brand-600"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">TikTok & Reels</h3>
-                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
-                                Tú nos envías tus videos en crudo (grabados con tu celular) y nosotros hacemos la magia. Aplicamos edición vertical súper dinámica, diseñada específicamente para retener la atención en los primeros 3 segundos.
-                            </p>
-                        </div>
-
-                        <!-- Service 2 -->
-                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                            <div class="w-16 h-16 bg-gradient-to-br from-pink-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-pink-50">
-                                <i data-lucide="layout-grid" class="w-7 h-7 text-pink-500"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Branding Exclusivo</h3>
-                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
-                                Un feed estéticamente impecable. Diseño de carruseles, portadas de reels y paleta de colores que transmitan confianza y alto valor a tus prospectos.
-                            </p>
-                        </div>
-
-                        <!-- Service 3 -->
-                        <div class="bg-white/60 backdrop-blur-xl border border-white/80 p-10 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden group">
-                            <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-                            <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-white rounded-2xl flex items-center justify-center mb-8 relative z-10 shadow-sm border border-purple-50">
-                                <i data-lucide="mouse-pointer-click" class="w-7 h-7 text-purple-600"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-4 text-text-main relative z-10">Presencia Web Elite</h3>
-                            <p class="text-text-muted leading-relaxed font-medium relative z-10">
-                                Landing Pages de alto impacto visual, optimizadas para destacar tus desarrollos estrella, captar leads calificados y aumentar tu prestigio en el mercado inmobiliario.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio Section -->
-            <section class="py-24 px-6 overflow-hidden relative">
-                <div class="max-w-7xl mx-auto">
-                    <div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
-                        <div>
-                            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-text-main">El trabajo en acción.</h2>
-                            <p class="text-text-muted text-lg font-medium">Formatos verticales optimizados para el algoritmo de hoy.</p>
-                        </div>
-                    </div>
-
-                    <!-- Horizontal Scroll Mockups for Reels/TikToks -->
-                    <div class="flex overflow-x-auto gap-8 pb-12 snap-x snap-mandatory hide-scrollbar">
-                        
-                        <!-- Mockup 1 -->
-                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <video id="mockup-video-1" src="./opt_IMG_4925.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
-                            
-                            <!-- Botón Mute/Unmute -->
-                            <button onclick="toggleVideoMute('mockup-video-1', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
-                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
-                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
-                            </button>
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
-                                        <i data-lucide="user" class="w-5 h-5"></i>
-                                    </div>
-                                    <span class="text-sm font-semibold">@cliente.inmobiliario</span>
-                                </div>
-                                <p class="text-sm font-light line-clamp-2">Tour virtual de este espectacular PH. 🏢✨ ¡Agenda tu visita!</p>
-                            </div>
-                        </div>
-
-                        <!-- Mockup 2 -->
-                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <video id="mockup-video-2" src="./opt_IMG_5552.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
-                            
-                            <!-- Botón Mute/Unmute -->
-                            <button onclick="toggleVideoMute('mockup-video-2', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
-                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
-                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
-                            </button>
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div class="w-16 h-16 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center">
-                                    <i data-lucide="play" class="w-8 h-8 text-white fill-white ml-1"></i>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
-                                        <i data-lucide="user" class="w-5 h-5"></i>
-                                    </div>
-                                    <span class="text-sm font-semibold">@cliente.asesor</span>
-                                </div>
-                                <p class="text-sm font-light line-clamp-2">3 tips para invertir en tu primera propiedad este año 📉💰</p>
-                            </div>
-                        </div>
-
-                        <!-- Mockup 3 -->
-                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden video-mockup group">
-                            <video id="mockup-video-3" src="./opt_IMG_5751.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"></video>
-                            
-                            <!-- Botón Mute/Unmute -->
-                            <button onclick="toggleVideoMute('mockup-video-3', this)" class="absolute top-4 right-4 z-20 w-10 h-10 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors" aria-label="Activar sonido">
-                                <span class="icon-muted block"><i data-lucide="volume-x" class="w-5 h-5"></i></span>
-                                <span class="icon-unmuted hidden"><i data-lucide="volume-2" class="w-5 h-5"></i></span>
-                            </button>
-                            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
-                            <div class="absolute bottom-6 left-6 right-6 text-white">
-                                <div class="flex items-center gap-2 mb-3">
-                                    <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
-                                        <i data-lucide="user" class="w-5 h-5"></i>
-                                    </div>
-                                    <span class="text-sm font-semibold">@agencia.realestate</span>
-                                </div>
-                                <p class="text-sm font-light line-clamp-2">Detalles que enamoran: acabados de lujo en la cocina 🤌</p>
-                            </div>
-                        </div>
-
-                        <!-- Mockup 4 (Call to Action) -->
-                        <div class="snap-center shrink-0 w-[280px] md:w-[320px] bg-white rounded-[2.5rem] border-[8px] border-white shadow-soft relative overflow-hidden flex items-center justify-center video-mockup cursor-pointer hover:bg-brand-50 transition-colors">
-                            <div class="text-center px-6">
-                                <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <i data-lucide="plus" class="w-8 h-8 text-brand-600"></i>
-                                </div>
-                                <h3 class="font-bold text-xl mb-2 text-text-main">Tu perfil aquí</h3>
-                                <p class="text-sm text-text-muted font-medium">Siguiente caso de éxito.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Pricing Section -->
-            <section class="py-32 px-6">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-20">
-                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-text-main">Planes de Inversión</h2>
-                        <p class="text-text-muted text-lg font-medium">Paquetes transparentes diseñados para escalar tu presencia.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                        <!-- Plan 1 -->
-                        <div class="bg-white p-10 rounded-[2rem] shadow-soft flex flex-col">
-                            <h3 class="text-2xl font-bold mb-2">Plan Presencia</h3>
-                            <p class="text-sm text-text-muted mb-8 h-10 font-medium">Feed profesional y estético.</p>
-                            <div class="text-4xl font-extrabold mb-8 text-text-main">$280 <span class="text-base font-medium text-text-muted">/mes</span></div>
-                            <ul class="space-y-4 mb-10 text-sm font-bold text-text-muted flex-grow">
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> Creación de Biografía y Paleta de colores</li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>Configuración de Cuentas<span class="block text-xs font-semibold text-text-muted/80 mt-1">Sincronización IG + Facebook</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>3 Publicaciones semanales en total<span class="block text-xs font-semibold text-brand-400/80 mt-1">1 Reel editado + 2 diseños, fotos o carruseles.</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>3 Historias diarias <span class="text-xs text-brand-300 font-bold block mt-1">(Lunes a Sábado)</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="alert-circle" class="w-5 h-5 text-pink-500 shrink-0 mt-0.5"></i> <div>Entrega de Grilla de Contenido <span class="text-xs text-pink-500 font-bold block mt-1">(El cliente se encarga de publicar)</span></div></li>
-                                <li class="flex items-start gap-3 pt-3 mt-3 border-t border-gray-100">
-                                    <span class="inline-flex items-center gap-1.5 text-xs text-brand-600 bg-brand-50 px-2 py-1 rounded-md">
-                                        <i data-lucide="leaf" class="w-3.5 h-3.5"></i> Crecimiento 100% Orgánico
-                                    </span>
-                                </li>
-                            </ul>
-                            <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Presencia." target="_blank" rel="noopener noreferrer" class="block text-center bg-brand-light text-brand-600 py-4 rounded-xl font-extrabold hover:bg-brand-100 transition-colors w-full">Seleccionar</a>
-                        </div>
-
-                        <!-- Plan 2 (Highlighted) -->
-                        <div class="bg-brand-dark p-10 rounded-[2rem] shadow-float relative transform md:-translate-y-4 flex flex-col text-white">
-                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-black uppercase tracking-widest py-1.5 px-5 rounded-full shadow-md">Recomendado</div>
-                            <h3 class="text-2xl font-bold mb-2">Plan Crecimiento</h3>
-                            <p class="text-sm text-brand-100/70 mb-8 h-10 font-medium">Enfoque en videos verticales y alcance.</p>
-                            <div class="text-5xl font-extrabold mb-8">$350 <span class="text-base font-medium text-brand-100/50">/mes</span></div>
-                            <ul class="space-y-4 mb-10 text-sm font-bold text-brand-50 flex-grow">
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0 mt-0.5"></i> Creación de Biografía y Paleta de colores</li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0 mt-0.5"></i> <div>Configuración de Cuentas<span class="block text-xs font-semibold text-brand-200 mt-1">Sincronización IG + Facebook</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0 mt-0.5"></i> <div>5 Publicaciones semanales en total<span class="block text-xs font-semibold text-pink-300/80 mt-1">2 Reels editados + 3 diseños, fotos o carruseles.</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0 mt-0.5"></i> <div>3 Historias diarias <span class="text-xs text-brand-300 font-bold block mt-1">(Lunes a Sábado)</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-pink-400 shrink-0 mt-0.5"></i> <div>Gestión Total de Publicación <span class="text-xs text-pink-400 font-bold block mt-1">(Publicamos en Instagram y TikTok)</span></div></li>
-                                <li class="flex items-start gap-3 pt-3 mt-3 border-t border-brand-800">
-                                    <span class="inline-flex items-center gap-1.5 text-xs text-brand-100 bg-brand-800/50 px-2 py-1 rounded-md border border-brand-700">
-                                        <i data-lucide="leaf" class="w-3.5 h-3.5 text-pink-400"></i> Crecimiento 100% Orgánico
-                                    </span>
-                                </li>
-                            </ul>
-                            <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20Crecimiento." target="_blank" rel="noopener noreferrer" class="block text-center bg-white text-brand-dark py-4 rounded-xl font-extrabold hover:bg-brand-50 transition-colors shadow-sm w-full">Seleccionar</a>
-                        </div>
-
-                        <!-- Plan 3 -->
-                        <div class="bg-white p-10 rounded-[2rem] shadow-soft flex flex-col">
-                            <h3 class="text-2xl font-bold mb-2">Plan Élite</h3>
-                            <p class="text-sm text-text-muted mb-8 h-10 font-medium">El ecosistema web y redes completo.</p>
-                            <div class="text-4xl font-extrabold mb-8 text-text-main">$499 <span class="text-base font-medium text-text-muted">/mes</span></div>
-                            <ul class="space-y-4 mb-10 text-sm font-bold text-text-muted flex-grow">
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>Todo el ecosistema del <span class="text-brand-600">Plan Crecimiento</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>1 Landing Page Ultra Optimizada<span class="block text-xs font-semibold text-brand-400/80 mt-1">Motor de conversión + Embudo de ventas</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>Gestión avanzada de Ads<span class="block text-xs font-semibold text-brand-400/80 mt-1">Campañas Meta (El cliente provee la inversión publicitaria)</span></div></li>
-                                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i> <div>Soporte Web Inicial<span class="block text-xs font-semibold text-brand-400/80 mt-1">2 meses de actualizaciones incluidas. Cambios posteriores bajo cotización.</span></div></li>
-                            </ul>
-                            <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20con%20el%20Plan%20%C3%89lite." target="_blank" rel="noopener noreferrer" class="block text-center bg-brand-light text-brand-600 py-4 rounded-xl font-extrabold hover:bg-brand-100 transition-colors w-full">Seleccionar</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Call to Action -->
-            <section id="contacto" class="py-24 px-6">
-                <div class="max-w-5xl mx-auto bg-brand-dark rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-float">
-                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-                    
-                    <div class="relative z-10">
-                        <h2 class="text-4xl md:text-6xl font-extrabold mb-8 text-white tracking-tight">¿Lista para dominar<br>tu mercado?</h2>
-                        <p class="text-xl text-brand-100/80 mb-12 max-w-2xl mx-auto font-medium">
-                            Escríbenos directamente y empecemos a trazar el camino correcto para dominar tu mercado.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="https://wa.me/584128998666?text=Hola!%20Quiero%20empezar%20ahora%20a%20dominar%20mi%20mercado%20con%20Aloha%20Digital." target="_blank" rel="noopener noreferrer" class="bg-white text-brand-dark px-8 py-4 rounded-full font-extrabold hover:scale-105 transition-all duration-300 text-lg shadow-lg flex items-center justify-center gap-2">
-                                <i data-lucide="message-circle" class="w-6 h-6 text-green-500"></i> Quiero iniciar ya
-                            </a>
-                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Footer -->
-            <footer class="border-t border-brand-200/50 py-12 px-6 text-center text-sm text-text-muted font-bold">
-                <div class="flex items-center justify-center gap-2.5 mb-6 text-text-main opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
-                    <img src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="150" height="32" loading="lazy" class="h-8 w-auto">
-                    <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
+            <footer class="border-t border-brand-200/50 py-16 px-6 text-center">
+                <div class="flex flex-col items-center justify-center mb-8">
+                    <div class="flex items-center gap-2.5 mb-4 text-text-main opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                        <img src="ne.png" alt="Aloha Digital Logo" width="150" height="32" class="h-8 w-auto">
+                        <span class="text-xl tracking-tight"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
+                    </div>
+                    <p class="text-text-muted text-sm font-medium max-w-md mx-auto">Agencia de marketing digital y desarrollo web de alto rendimiento. Ecosistemas escalables para marcas internacionales.</p>
                 </div>
-                <p>Producido con exclusividad por Aloha Digital &copy; 2026</p>
+                
+                <div class="flex gap-6 justify-center mb-12">
+                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-600 hover:bg-brand-600 hover:text-white shadow-sm transition-colors" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-600 hover:bg-brand-600 hover:text-white shadow-sm transition-colors" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-brand-600 hover:bg-brand-600 hover:text-white shadow-sm transition-colors" aria-label="TikTok">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                </div>
+
+                <div class="text-xs text-text-muted/60 font-bold uppercase tracking-widest border-t border-brand-200/50 pt-8">
+                    <p>&copy; 2026 Aloha Digital. Todos los derechos reservados.</p>
+                </div>
             </footer>
         </div>
     </main>
 
-    <!-- Initialize Icons and Scripts -->
+    <!-- Scripts -->
     <script>
-        // Init Lucide Icons
-        lucide.createIcons();
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar Iconos
+            lucide.createIcons();
 
-        // Navbar transparent to solid on scroll (Dynamic Glassmorphism)
-        const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('nav-logo');
-        const navCta = document.getElementById('nav-cta');
-        const heroSection = document.querySelector('section.sticky.top-0'); // El Hero
-        
-        window.addEventListener('scroll', () => {
-            // Calculamos cuándo el usuario sale del Hero (aprox la altura del hero)
-            const heroHeight = window.innerHeight; // O heroSection.offsetHeight
+            // Lógica del Navbar Transparente a Sólido
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('nav-logo');
+            const navCta = document.getElementById('nav-cta');
             
-            if (window.scrollY > heroHeight - 100) {
-                // Estamos en las secciones claras (Glassmorphism claro)
-                navbar.classList.remove('bg-brand-dark/90', 'border-white/10', 'text-white');
-                navbar.classList.add('bg-white/70', 'border-brand-200/50', 'text-text-main', 'shadow-soft');
-                
-                // Cambiar Logo a oscuro
-                navLogo.classList.remove('brightness-0', 'invert');
-                
-                // Cambiar botón a diseño oscuro
-                navCta.classList.remove('bg-white', 'text-brand-dark');
-                navCta.classList.add('bg-brand-dark', 'text-white');
-            } else {
-                // Estamos en el Hero Morado (Glassmorphism oscuro)
-                navbar.classList.add('bg-brand-dark/90', 'border-white/10', 'text-white');
-                navbar.classList.remove('bg-white/70', 'border-brand-200/50', 'text-text-main', 'shadow-soft');
-                
-                // Cambiar Logo a blanco
-                navLogo.classList.add('brightness-0', 'invert');
-                
-                // Cambiar botón a diseño blanco
-                navCta.classList.add('bg-white', 'text-brand-dark');
-                navCta.classList.remove('bg-brand-dark', 'text-white');
-            }
-        });
-
-        // Lógica del Carrusel Interactivo
-        let currentSlide = 1;
-        let carouselInterval = setInterval(() => toggleCarousel(false), 4000); 
-
-        function toggleCarousel(isManual = false) {
-            const img1 = document.getElementById('carousel-img-1');
-            const img2 = document.getElementById('carousel-img-2');
-            const dot1 = document.getElementById('dot-1');
-            const dot2 = document.getElementById('dot-2');
-
-            if (!img1 || !img2) return;
-
-            if (currentSlide === 1) {
-                img1.classList.replace('opacity-100', 'opacity-0');
-                img2.classList.replace('opacity-0', 'opacity-100');
-                dot1.classList.replace('w-8', 'w-2');
-                dot1.classList.replace('bg-white', 'bg-white/40');
-                dot2.classList.replace('w-2', 'w-8');
-                dot2.classList.replace('bg-white/40', 'bg-white');
-                currentSlide = 2;
-            } else {
-                img1.classList.replace('opacity-0', 'opacity-100');
-                img2.classList.replace('opacity-100', 'opacity-0');
-                dot1.classList.replace('w-2', 'w-8');
-                dot1.classList.replace('bg-white/40', 'bg-white');
-                dot2.classList.replace('w-8', 'w-2');
-                dot2.classList.replace('bg-white', 'bg-white/40');
-                currentSlide = 1;
-            }
-            
-            if (isManual) {
-                clearInterval(carouselInterval);
-                carouselInterval = setInterval(() => toggleCarousel(false), 4000);
-            }
-        }
-
-        // Lógica para el Scroll Activo de "Cómo Funciona" (Solo Desktop)
-        const desktopSteps = document.querySelectorAll('.desktop-step-item');
-        const desktopMediaSteps = document.querySelectorAll('.desktop-media');
-
-        // Solo inicializamos el observer si estamos en desktop (md: width > 768px aprox, o simplemente dejamos que corra, pero aplicamos a elementos de desktop)
-        const observerOptions = {
-            root: null,
-            rootMargin: '-30% 0px -30% 0px', 
-            threshold: 0.1
-        };
-
-        const stepObserver = new IntersectionObserver((entries) => {
-            // Verificamos que sea pantalla de escritorio para no sobrecargar en móvil
-            if (window.innerWidth < 768) return;
-
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const stepIndex = parseInt(entry.target.getAttribute('data-step')) - 1;
-                    
-                    // 1. Activar el texto
-                    desktopSteps.forEach((step, idx) => {
-                        const numberBadge = step.querySelector('div.w-12');
-                        if (idx === stepIndex) {
-                            step.classList.replace('opacity-40', 'opacity-100');
-                            numberBadge.classList.replace('bg-white', 'bg-brand-600');
-                            numberBadge.classList.replace('text-brand-600', 'text-white');
-                            numberBadge.classList.replace('border-2', 'border-0');
-                            numberBadge.classList.add('shadow-md');
-                        } else {
-                            step.classList.replace('opacity-100', 'opacity-40');
-                            numberBadge.classList.replace('bg-brand-600', 'bg-white');
-                            numberBadge.classList.replace('text-white', 'text-brand-600');
-                            numberBadge.classList.replace('border-0', 'border-2');
-                            numberBadge.classList.remove('shadow-md');
-                        }
-                    });
-
-                    // 2. Cambiar la imagen/media
-                    desktopMediaSteps.forEach((media, idx) => {
-                        if (idx === stepIndex) {
-                            media.classList.replace('opacity-0', 'opacity-100');
-                            media.classList.remove('pointer-events-none');
-                        } else {
-                            media.classList.replace('opacity-100', 'opacity-0');
-                            media.classList.add('pointer-events-none');
-                        }
-                    });
+            window.addEventListener('scroll', () => {
+                const heroHeight = window.innerHeight;
+                if (window.scrollY > heroHeight - 100) {
+                    navbar.classList.replace('bg-brand-dark/90', 'bg-white/90');
+                    navbar.classList.replace('text-white', 'text-text-main');
+                    navLogo.classList.remove('brightness-0', 'invert');
+                    navCta.classList.replace('bg-white', 'bg-brand-dark');
+                    navCta.classList.replace('text-brand-dark', 'text-white');
+                } else {
+                    navbar.classList.replace('bg-white/90', 'bg-brand-dark/90');
+                    navbar.classList.replace('text-text-main', 'text-white');
+                    navLogo.classList.add('brightness-0', 'invert');
+                    navCta.classList.replace('bg-brand-dark', 'bg-white');
+                    navCta.classList.replace('text-white', 'text-brand-dark');
                 }
             });
-        }, observerOptions);
 
-        desktopSteps.forEach(step => stepObserver.observe(step));
-
-        // Función para controlar el mute de los videos de manera individual
-        function toggleVideoMute(videoId, btn) {
-            const video = document.getElementById(videoId);
-            if (!video) return;
-
-            // Si vamos a desmutear, primero muteamos cualquier otro video que esté sonando
-            if (video.muted) {
-                document.querySelectorAll('video[id^="mockup-video"]').forEach(v => {
-                    if (v.id !== videoId) {
-                        v.muted = true;
-                        const otherBtn = v.parentElement.querySelector('button');
-                        if (otherBtn) {
-                            otherBtn.querySelector('.icon-muted').classList.replace('hidden', 'block');
-                            otherBtn.querySelector('.icon-unmuted').classList.replace('block', 'hidden');
-                        }
+            // Animaciones de Entrada (Reveal on Scroll)
+            function reveal() {
+                var reveals = document.querySelectorAll(".reveal");
+                for (var i = 0; i < reveals.length; i++) {
+                    var windowHeight = window.innerHeight;
+                    var elementTop = reveals[i].getBoundingClientRect().top;
+                    var elementVisible = 100; // Cuántos pixeles deben asomarse para animar
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveals[i].classList.add("active");
                     }
+                }
+            }
+            window.addEventListener("scroll", reveal);
+            reveal(); // Llamada inicial por si ya hay elementos visibles al cargar
+
+            // Lógica del Formulario Gamificado (Quiz Funnel)
+            window.nextQuizStep = function(step) {
+                // Ocultar todos los pasos
+                document.querySelectorAll('.quiz-step').forEach(el => {
+                    el.classList.remove('active', 'opacity-100', 'relative', 'z-10');
+                    el.classList.add('hidden', 'opacity-0', 'absolute', 'z-0');
                 });
-            }
-
-            // Alternar el estado de mute
-            video.muted = !video.muted;
-            
-            // Actualizar iconos
-            const iconMuted = btn.querySelector('.icon-muted');
-            const iconUnmuted = btn.querySelector('.icon-unmuted');
-
-            if (video.muted) {
-                iconMuted.classList.replace('hidden', 'block');
-                iconUnmuted.classList.replace('block', 'hidden');
-            } else {
-                iconMuted.classList.replace('block', 'hidden');
-                iconUnmuted.classList.replace('hidden', 'block');
-            }
-        }
-
+                
+                // Mostrar el paso destino
+                const target = document.getElementById('step-' + step);
+                if(target) {
+                    target.classList.remove('hidden', 'absolute', 'z-0');
+                    target.classList.add('relative', 'z-10');
+                    // Timeout para efecto suave
+                    setTimeout(() => {
+                        target.classList.remove('opacity-0');
+                        target.classList.add('opacity-100', 'active');
+                    }, 50);
+                }
+                
+                // Actualizar barra de progreso
+                const progress = document.getElementById('quiz-progress');
+                if(progress) {
+                    const percentages = ['25%', '50%', '75%', '100%'];
+                    progress.style.width = percentages[step-1];
+                }
+                
+                // Re-inicializar iconos si es necesario
+                if(window.lucide) { lucide.createIcons(); }
+            };
+        });
     </script>
 </body>
 </html>

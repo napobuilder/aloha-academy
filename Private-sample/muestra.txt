@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisión Confidencial | Aloha Digital</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#270e4e',
+                            light: '#fdf8fa',
+                            accent: '#a855f7',
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            600: '#7c3aed',
+                            900: '#4c1d95',
+                        },
+                        text: {
+                            main: '#1e0f35',
+                            muted: '#5a4a75',
+                        }
+                    },
+                    boxShadow: {
+                        'float': '0 30px 60px -20px rgba(124, 58, 237, 0.4)',
+                        'glow': '0 0 40px rgba(168, 85, 247, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #1e0f35; /* Un fondo aún más oscuro para hacer resaltar el video */
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Ocultar barra de scroll para limpieza visual */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1e0f35; }
+        ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 4px; }
+
+        .video-mockup {
+            aspect-ratio: 9 / 16;
+        }
+        
+        /* Personalizar el reproductor nativo (Chrome/Safari) */
+        video::-webkit-media-controls-enclosure {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white min-h-screen flex flex-col relative">
+
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-600 rounded-full blur-[150px] opacity-20 pointer-events-none -z-10"></div>
+    <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-pink-500 rounded-full blur-[150px] opacity-10 pointer-events-none -z-10"></div>
+
+    <!-- Header Minimalista (Sin enlaces para evitar fugas) -->
+    <header class="w-full py-6 px-6 flex justify-between items-center border-b border-white/5 relative z-20 bg-brand-dark/30 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-2.5">
+                <img src="https://i.imgur.com/616M7mW.png" alt="Aloha Digital Logo" width="120" class="h-6 w-auto brightness-0 invert opacity-90">
+                <span class="text-xl tracking-tight opacity-90"><span class="font-normal">ALOHA</span> <span class="font-extrabold">DIGITAL</span></span>
+            </div>
+            <div class="flex items-center gap-2 bg-brand-900/50 border border-brand-accent/30 px-3 py-1.5 rounded-full">
+                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span class="text-xs font-bold tracking-widest uppercase text-brand-100">Enlace Privado</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Columna Izquierda: Mensaje y CTA -->
+            <div class="order-2 lg:order-1 text-center lg:text-left flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-500/30 text-pink-300 font-bold text-xs tracking-widest uppercase mb-6 bg-pink-500/10">
+                    Muestra de Edición
+                </div>
+                
+                <!-- PERSONALIZAR: Nombre del cliente aquí -->
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                    Hola, <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Cliente VIP</span>
+                </h1>
+                
+                <p class="text-lg text-brand-100/70 mb-8 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+                    Hemos preparado un corte exclusivo para demostrar el nivel de retención visual, dinamismo y calidad que aplicaríamos a tu contenido inmobiliario.
+                </p>
+
+                <div class="bg-brand-dark/50 border border-white/10 p-6 rounded-2xl mb-10 text-left max-w-lg mx-auto lg:mx-0">
+                    <h3 class="font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-brand-400"></i> Notas de revisión:
+                    </h3>
+                    <ul class="space-y-3 text-sm text-brand-100/70">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>
+                            Ganchos visuales optimizados para los primeros 3 segundos.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-400 mt-0.5 shrink-0"></i>
+                            Corrección de color y subtítulos dinámicos de alta retención.
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="info" class="w-4 h-4 text-brand-400 mt-0.5 shrink-0"></i>
+                            <span class="text-brand-100 font-semibold">El archivo final se entrega en 4K/Alta resolución y sin marcas de agua al activar tu plan.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Call to Actions -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <!-- PERSONALIZAR: Enlace de WhatsApp -->
+                    <a href="https://wa.me/584128998666?text=Hola!%20Ya%20vi%20la%20muestra%20y%20me%20encant%C3%B3.%20Quiero%20elegir%20mi%20plan." target="_blank" rel="noopener noreferrer" class="bg-white text-brand-dark px-8 py-4 rounded-full font-extrabold hover:scale-105 hover:shadow-glow transition-all duration-300 text-base shadow-lg flex items-center justify-center gap-2">
+                        Aprobar y elegir plan <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://wa.me/584128998666?text=Hola!%20Estoy%20viendo%20la%20muestra,%20tengo%20unas%20dudas." target="_blank" rel="noopener noreferrer" class="bg-transparent border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all duration-300 text-base flex items-center justify-center gap-2">
+                        Tengo comentarios
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: El Reproductor de Video -->
+            <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+                
+                <!-- Efecto de brillo detrás del celular -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-500 rounded-full blur-[80px] opacity-30 z-0"></div>
+
+                <!-- Marco del dispositivo móvil -->
+                <div class="relative z-10 w-[300px] md:w-[340px] bg-[#111] rounded-[3rem] border-[10px] border-[#222] shadow-float overflow-hidden video-mockup ring-1 ring-white/10">
+                    
+                    <!-- Simulación de cámara/notch -->
+                    <div class="absolute top-0 inset-x-0 h-7 flex justify-center z-30">
+                        <div class="w-32 h-6 bg-[#222] rounded-b-3xl"></div>
+                    </div>
+
+                    <!-- REPRODUCTOR DE VIDEO PROTEGIDO -->
+                    <!-- NOTA: controlsList="nodownload" quita el boton de descargar. oncontextmenu="return false;" quita el clic derecho -->
+                    <video 
+                        src="./opt_IMG_4925.mp4" 
+                        controls 
+                        controlsList="nodownload" 
+                        oncontextmenu="return false;"
+                        class="absolute inset-0 w-full h-full object-cover bg-black"
+                        poster="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400">
+                        Tu navegador no soporta el formato de video.
+                    </video>
+
+                    <!-- MARCA DE AGUA (Watermark) CSS -->
+                    <!-- Está por encima del video pero no interfiere con los clics (pointer-events-none) -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden">
+                        <div class="w-[150%] border-y border-white/10 bg-white/5 py-4 transform -rotate-45 flex flex-col items-center justify-center backdrop-blur-[2px]">
+                            <span class="text-white/40 font-black text-2xl tracking-[0.2em] uppercase drop-shadow-md text-center leading-tight">
+                                Muestra Privada<br>
+                                <span class="text-brand-300/40 text-lg">Aloha Digital</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-6 text-center text-xs text-brand-100/50 font-medium relative z-10">
+        <p>Este enlace es confidencial y para uso exclusivo de revisión.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
